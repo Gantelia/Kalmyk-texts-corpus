@@ -22,10 +22,10 @@ function Layout() {
             alt="Логотип КалмГУ"
           />
         </Link>
-        <h1 className="header__title">
+        <p className="header__title">
           Корпус текстов
           <br /> калмыцкого языка
-        </h1>
+        </p>
       </header>
       <Outlet />
       <footer className="footer">

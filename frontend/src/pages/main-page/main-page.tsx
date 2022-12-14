@@ -1,7 +1,17 @@
+import Form from '../../components/form/form';
+
+import './main-page.scss';
+
 function MainPage() {
   return (
     <main className="main main--index">
-      <h2 className="visually-hidden">Главная страница</h2>
+      <h1 className="visually-hidden">Корпус текстов калмыцкого языка</h1>
+      <Form />
+      <section className="genre-structure">
+        <h2 className="title genre-structure__title">
+          Иерархическая структура жанров
+        </h2>
+      </section>
     </main>
   );
 }

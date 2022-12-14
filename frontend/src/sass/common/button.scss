@@ -1,0 +1,14 @@
+@import '../variables.scss';
+
+.button {
+  border: none;
+  padding: 17px 70px;
+  border-radius: 12px;
+  background-color: $basic-dark;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  font-family: 'PT Sans Caption', sans-serif;
+  cursor: pointer;
+}

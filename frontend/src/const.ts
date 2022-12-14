@@ -4,3 +4,9 @@ export enum AppRoute {
   AddText = '/addText',
   NotFound = '*'
 }
+
+export enum DropdownType {
+  Genres = 'genres',
+  Authors = 'authors',
+  Default = ''
+}

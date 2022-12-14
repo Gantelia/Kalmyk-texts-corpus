@@ -24,7 +24,7 @@ function ScrollButton() {
   return (
     <>
       {showButton && (
-        <button className="button scroll-button" onClick={handleScrollToTop}>
+        <button className="scroll-button" onClick={handleScrollToTop}>
           <svg
             className="scroll-button__image"
             aria-hidden="true"

@@ -6,15 +6,14 @@
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 22px;
+  margin-bottom: 10px;
 }
 
 .breadcrumb__item {
   margin-bottom: 22px;
-  margin-right: 16px;
 
-  &:not(:first-child) {
-    margin-left: 16px;
+  &:not(:last-child) {
+    margin-right: 32px;
   }
 }
 

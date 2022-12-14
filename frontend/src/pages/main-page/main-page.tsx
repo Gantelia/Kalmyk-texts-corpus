@@ -1,5 +1,7 @@
 import Breadcrumb from '../../components/breadcrumb/breadcrumb';
+import CardList from '../../components/card-list/card-list';
 import Form from '../../components/form/form';
+import { LiteratureCards } from '../../mocks/mocks';
 
 import './main-page.scss';
 
@@ -13,6 +15,7 @@ function MainPage() {
           Иерархическая структура жанров
         </h2>
         <Breadcrumb />
+        <CardList cards={LiteratureCards.items} />
       </section>
     </main>
   );

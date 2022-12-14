@@ -1,0 +1,44 @@
+@import '../../sass/variables.scss';
+
+.cards {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  width: 515px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.cards--wide {
+  width: 790px;
+}
+
+.cards__item {
+  margin: 12px;
+}
+
+.cards__button {
+  width: 230px;
+  min-height: 280px;
+  height: 100%;
+  border-radius: 12px;
+  border: none;
+  padding: 16px;
+  background-color: $bg-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__image {
+  margin-bottom: 28px;
+}
+
+.card__title {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}

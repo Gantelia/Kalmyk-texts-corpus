@@ -15,3 +15,5 @@ export enum RenderStyle {
   Cards = 'cards',
   Table = 'table'
 }
+
+export const MAX_CARD_COUNT = 4;

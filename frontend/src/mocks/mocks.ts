@@ -1,4 +1,5 @@
 import { RenderStyle } from '../const';
+import { Genre } from '../types/genre';
 
 export const GENRES = [
   { id: 1, genre: 'Фольклор' },
@@ -9,14 +10,14 @@ export const GENRES = [
   { id: 6, genre: 'Фольклор.Поэмы' },
   { id: 7, genre: 'Фольклор.Песни' },
   { id: 8, genre: 'Поэзия' },
-  { id: 9, genre: 'Поэзия.Дореволюционная_поэзия' },
-  { id: 10, genre: 'Поэзия.Советская_поэзия' },
-  { id: 11, genre: 'Поэзия.Современная_поэзия' },
-  { id: 12, genre: 'Поэзия.Советские_песни' },
-  { id: 13, genre: 'Поэзия.Современные_песни' },
-  { id: 14, genre: 'Религиозная_литература' },
-  { id: 15, genre: 'Религиозная_литература.Буддийские_тексты' },
-  { id: 16, genre: 'Религиозная_литература.Христианские_тексты' }
+  { id: 9, genre: 'Поэзия.Дореволюционная поэзия' },
+  { id: 10, genre: 'Поэзия.Советская поэзия' },
+  { id: 11, genre: 'Поэзия.Современная поэзия' },
+  { id: 12, genre: 'Поэзия.Советские песни' },
+  { id: 13, genre: 'Поэзия.Современные песни' },
+  { id: 14, genre: 'Религиозная литература' },
+  { id: 15, genre: 'Религиозная литература.Буддийские тексты' },
+  { id: 16, genre: 'Религиозная литература.Христианские тексты' }
 ];
 
 export const AUTHORS = [
@@ -41,68 +42,74 @@ export const AUTHORS = [
   'Гучинова Э.'
 ];
 
-export const BREADCRUMB = [
-  { id: 500, title: 'Жанры' },
-  { id: 501, title: 'Проза' },
-  { id: 502, title: 'Грустная проза' },
-  { id: 503, title: 'И немного былин' }
+export const BREADCRUMB: Genre[] = [
+  { id: 0, genre: 'Жанры' },
+  { id: 1, genre: 'Проза' },
+  { id: 101, genre: 'Грустная проза' },
+  { id: 201, genre: 'И немного былин' }
 ];
 
 export const LiteratureCards = {
   renderStyle: RenderStyle.Cards,
-  literatureItems: [
+  items: [
     {
-      id: '1',
+      id: 1,
       title: 'Фольклор',
-      picture: '../images/icon-folklore.png'
+      picture: 'assets/icon-folklore.png'
     },
     {
-      id: '2',
+      id: 2,
       title: 'Поэзия',
-      picture: '../images/icon-poetry.png'
+      picture: 'assets/icon-poetry.png'
     },
     {
-      id: '3',
+      id: 3,
       title: 'Проза',
-      picture: '../images/icon-prose.png'
+      picture: 'assets/icon-prose.png'
     },
     {
-      id: '4',
-      title: 'Религиозная_литература',
-      picture: '../images/icon-religion.png'
+      id: 4,
+      title: 'Религиозная литература',
+      picture: 'assets/icon-religion.png'
+    },
+    {
+      id: 5,
+      title: 'Манга',
+      picture: 'assets/file-text.svg'
     }
   ]
 };
 
 export const LiteratureTable = {
   renderStyle: RenderStyle.Table,
-  literatureItems: [
+  page: 1,
+  items: [
     {
-      id: '122',
+      id: 122,
       title: 'Идиот',
       author: 'Достоевский Федор Михайлович',
       year: 1868
     },
     {
-      id: '120',
+      id: 120,
       title: 'Преступление и наказание',
       author: 'Достоевский Федор Михайлович',
       year: 2016
     },
     {
-      id: '121',
+      id: 121,
       title: 'Война и мир',
       author: 'Толстой Лев Николаевич',
       year: null
     },
     {
-      id: '123',
+      id: 123,
       title: 'Трудно быть богом',
       author: 'Стругацкие Аркадий и Борис',
       year: 2030
     },
     {
-      id: '124',
+      id: 124,
       title: 'Былины',
       author: null,
       year: null

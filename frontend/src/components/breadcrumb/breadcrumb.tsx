@@ -8,7 +8,7 @@ function Breadcrumb() {
 
   return (
     <ul className="breadcrumb">
-      {BREADCRUMB.map(({ id, title }) => (
+      {BREADCRUMB.map(({ id, genre }) => (
         <li className="breadcrumb__item" key={id}>
           <button
             className={`breadcrumb__button ${
@@ -17,7 +17,7 @@ function Breadcrumb() {
             type="button"
             onClick={() => setActive(id)}
           >
-            {title}
+            {genre}
           </button>
         </li>
       ))}

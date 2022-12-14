@@ -10,3 +10,8 @@ export enum DropdownType {
   Authors = 'authors',
   Default = ''
 }
+
+export enum RenderStyle {
+  Cards = 'cards',
+  Table = 'table'
+}

@@ -1,3 +1,5 @@
+import { RenderStyle } from '../const';
+
 export const GENRES = [
   { id: 1, genre: 'Фольклор' },
   { id: 2, genre: 'Фольклор.Эпосы' },
@@ -38,3 +40,65 @@ export const AUTHORS = [
   'Гавраева С.',
   'Гучинова Э.'
 ];
+
+export const LiteratureCards = {
+  renderStyle: RenderStyle.Cards,
+  literatureItems: [
+    {
+      id: '1',
+      title: 'Фольклор',
+      picture: '../images/icon-folklore.png'
+    },
+    {
+      id: '2',
+      title: 'Поэзия',
+      picture: '../images/icon-poetry.png'
+    },
+    {
+      id: '3',
+      title: 'Проза',
+      picture: '../images/icon-prose.png'
+    },
+    {
+      id: '4',
+      title: 'Религиозная_литература',
+      picture: '../images/icon-religion.png'
+    }
+  ]
+};
+
+export const LiteratureTable = {
+  renderStyle: RenderStyle.Table,
+  literatureItems: [
+    {
+      id: '122',
+      title: 'Идиот',
+      author: 'Достоевский Федор Михайлович',
+      year: 1868
+    },
+    {
+      id: '120',
+      title: 'Преступление и наказание',
+      author: 'Достоевский Федор Михайлович',
+      year: 2016
+    },
+    {
+      id: '121',
+      title: 'Война и мир',
+      author: 'Толстой Лев Николаевич',
+      year: null
+    },
+    {
+      id: '123',
+      title: 'Трудно быть богом',
+      author: 'Стругацкие Аркадий и Борис',
+      year: 2030
+    },
+    {
+      id: '124',
+      title: 'Былины',
+      author: null,
+      year: null
+    }
+  ]
+};

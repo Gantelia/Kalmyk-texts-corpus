@@ -3,7 +3,7 @@
 .scroll-button {
   position: fixed;
   bottom: 7%;
-  right: calc(((100% - 1200px) / 2) + 1200 * 0.1);
+  right: calc(((100% - $app-width) / 2) + $app-width * 0.1);
   width: 55px;
   height: 55px;
   fill: $basic-dark;

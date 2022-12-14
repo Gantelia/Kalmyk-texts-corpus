@@ -41,6 +41,13 @@ export const AUTHORS = [
   'Гучинова Э.'
 ];
 
+export const BREADCRUMB = [
+  { id: 500, title: 'Жанры' },
+  { id: 501, title: 'Проза' },
+  { id: 502, title: 'Грустная проза' },
+  { id: 503, title: 'И немного былин' }
+];
+
 export const LiteratureCards = {
   renderStyle: RenderStyle.Cards,
   literatureItems: [

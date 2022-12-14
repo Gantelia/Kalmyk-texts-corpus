@@ -1,3 +1,4 @@
+import Breadcrumb from '../../components/breadcrumb/breadcrumb';
 import Form from '../../components/form/form';
 
 import './main-page.scss';
@@ -11,6 +12,7 @@ function MainPage() {
         <h2 className="title genre-structure__title">
           Иерархическая структура жанров
         </h2>
+        <Breadcrumb />
       </section>
     </main>
   );

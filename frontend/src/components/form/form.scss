@@ -2,16 +2,6 @@
 @import '../../sass/common/button.scss';
 
 .form {
-  margin-bottom: 132px;
-}
-
-.form__fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.form__container {
   display: grid;
   grid-template-columns: 655px 1fr;
   column-gap: 25px;

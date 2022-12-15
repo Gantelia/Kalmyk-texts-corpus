@@ -19,40 +19,32 @@ function Form() {
 
   return (
     <form className="form">
-      {/* fieldset здесь ради legend в качестве названия формы.
-        Вероятно, h2 лучше, но удалось найти только обратные сведения */}
-      <fieldset className="form__fieldset">
-        <legend className="title">Поиск</legend>
-        <div className="form__container">
-          <Dropdown
-            options={GENRES}
-            label={'Выберите жанр'}
-            id={DropdownType.Genres}
-            onChange={onDropdownChange}
-            activeDropdown={activeDropdown}
-          />
-          <Dropdown
-            options={AUTHORS}
-            label={'Выберите автора'}
-            id={DropdownType.Authors}
-            onChange={onDropdownChange}
-            activeDropdown={activeDropdown}
-          />
-          <input
-            className="form__input"
-            type="text"
-            id="search-by-text"
-            placeholder="Введите текст"
-          />
-          <label className="visually-hidden" htmlFor="search-by-text">
-            Поиск по тексту
-          </label>
-          {/* submit расположен внутри fieldset для удобства построения сетки */}
-          <button className="button form__submit" type="submit">
-            Искать
-          </button>
-        </div>
-      </fieldset>
+      <Dropdown
+        options={GENRES}
+        label={'Выберите жанр'}
+        id={DropdownType.Genres}
+        onChange={onDropdownChange}
+        activeDropdown={activeDropdown}
+      />
+      <Dropdown
+        options={AUTHORS}
+        label={'Выберите автора'}
+        id={DropdownType.Authors}
+        onChange={onDropdownChange}
+        activeDropdown={activeDropdown}
+      />
+      <input
+        className="form__input"
+        type="text"
+        id="search-by-text"
+        placeholder="Введите текст"
+      />
+      <label className="visually-hidden" htmlFor="search-by-text">
+        Поиск по тексту
+      </label>
+      <button className="button form__submit" type="submit">
+        Искать
+      </button>
     </form>
   );
 }

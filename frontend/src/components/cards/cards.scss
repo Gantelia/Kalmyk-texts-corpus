@@ -1,7 +1,7 @@
 @import '../../sass/variables.scss';
 
 .cards {
-  margin: 0 auto;
+  margin: 33px auto 0;
   padding: 0;
   list-style-type: none;
   width: 515px;
@@ -20,17 +20,25 @@
 }
 
 .cards__button {
+  font-size: 20px;
+  line-height: 26px;
   width: 230px;
-  min-height: 280px;
+  min-height: 300px;
   height: 100%;
   border-radius: 12px;
   border: none;
-  padding: 16px;
+  padding: 50px 16px 42px;
   background-color: $bg-light;
+  color: #484848;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+}
+
+.card__title {
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
 .card__image {

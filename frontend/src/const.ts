@@ -16,4 +16,6 @@ export enum RenderStyle {
   Table = 'table'
 }
 
-export const MAX_CARD_COUNT = 4;
+export const NARROW_LIST_CARD_COUNT = 4;
+
+export const NO_PAGINATION_PAGE_COUNT = 1;

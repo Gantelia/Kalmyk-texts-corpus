@@ -1,13 +1,13 @@
-import { MAX_CARD_COUNT } from '../../const';
+import { NARROW_LIST_CARD_COUNT } from '../../const';
 import { CardItem } from '../../types/cards';
-import './card-list.scss';
+import './cards.scss';
 
-type CardListProps = {
+type CardsProps = {
   cards: CardItem[];
 };
 
-function CardList({ cards }: CardListProps) {
-  const isWide = cards.length > MAX_CARD_COUNT;
+function Cards({ cards }: CardsProps) {
+  const isWide = cards.length > NARROW_LIST_CARD_COUNT;
 
   return (
     <ul className={`cards ${isWide ? 'cards--wide' : ''}`}>
@@ -29,4 +29,4 @@ function CardList({ cards }: CardListProps) {
   );
 }
 
-export default CardList;
+export default Cards;

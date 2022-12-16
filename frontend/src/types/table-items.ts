@@ -3,8 +3,8 @@ import { RenderStyle } from '../const';
 export type TableItem = {
   id: number;
   title: string;
-  author: string;
-  year: number;
+  author: string | null;
+  year: number | null;
 };
 
 export type LiteratureTable = {

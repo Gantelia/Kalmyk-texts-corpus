@@ -1,0 +1,104 @@
+@import '../../sass/variables.scss';
+
+.table {
+  margin-bottom: 32px;
+  font-size: 20px;
+  line-height: 26px;
+  color: #4e4e53;
+  background-color: $bg-light;
+  font-size: 20px;
+  line-height: 26px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+.table__caption {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 700;
+  color: $basic-dark;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.table__row:nth-child(even) {
+  background-color: #c7d3e0;
+}
+
+.table__row--head {
+  font-weight: 700;
+}
+
+.table__row--head .table__cell {
+  padding: 4px 9px 4px 12px;
+}
+
+.table__cell {
+  padding: 4px 8px 4px 13px;
+
+  &:first-child {
+    width: 300px;
+  }
+
+  &:nth-child(2) {
+    border-left: 1px solid #bbc7d4;
+    border-right: 1px solid #bbc7d4;
+  }
+
+  &:nth-child(3) {
+    width: 195px;
+  }
+}
+
+.table__container {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+}
+
+.table__button {
+  background-color: inherit;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
+    color: #c16800;
+  }
+}
+
+// pagination
+
+.main--index .MuiPagination-root {
+  display: flex;
+}
+
+.main--index .MuiPagination-ul {
+  width: auto;
+  margin: 0 auto;
+}
+
+.main--index .MuiPaginationItem-root {
+  background-color: #ffffff;
+  color: #4e4e53;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+
+  &.Mui-selected {
+    background-color: $basic-dark;
+    color: #ffffff;
+    border: none;
+  }
+}

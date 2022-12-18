@@ -11,9 +11,10 @@ export enum DropdownType {
   Default = ''
 }
 
-export enum RenderStyle {
+export enum RenderType {
   Cards = 'cards',
-  Table = 'table'
+  Table = 'table',
+  Text = 'text'
 }
 
 export const NARROW_LIST_CARD_COUNT = 4;

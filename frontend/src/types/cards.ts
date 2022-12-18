@@ -1,4 +1,4 @@
-import { RenderStyle } from '../const';
+import { RenderType } from '../const';
 
 export type CardItem = {
   id: number;
@@ -7,6 +7,6 @@ export type CardItem = {
 };
 
 export type LiteratureCards = {
-  renderStyle: RenderStyle;
+  renderStyle: RenderType;
   items: CardItem[];
 };

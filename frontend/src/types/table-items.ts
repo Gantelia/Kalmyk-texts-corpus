@@ -1,4 +1,4 @@
-import { RenderStyle } from '../const';
+import { RenderType } from '../const';
 
 export type TableItem = {
   id: number;
@@ -8,7 +8,7 @@ export type TableItem = {
 };
 
 export type LiteratureTable = {
-  renderStyle: RenderStyle;
+  renderStyle: RenderType;
   page: 1;
   items: TableItem[];
 };

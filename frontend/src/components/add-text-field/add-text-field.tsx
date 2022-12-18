@@ -37,13 +37,15 @@ const AddTextField = forwardRef<HTMLTextAreaElement, AddTextFieldProps>(
         >
           Введите текст
         </label>
-        <button
-          className="add-text__clear"
-          type="button"
-          onClick={() => setText('')}
-        >
-          <span className="visually-hidden">Очистить</span>
-        </button>
+        {text && (
+          <button
+            className="add-text__clear"
+            type="button"
+            onClick={() => setText('')}
+          >
+            <span className="visually-hidden">Очистить</span>
+          </button>
+        )}
       </div>
     );
   }

@@ -7,8 +7,12 @@
 }
 
 .add-text__grow-wrap::before {
+  /* Считывает контент с <textarea> через родит. эл-т,
+   заставляя <textarea> растягиваться под высоту содержимого через общую grid */
   content: attr(data-replicated-value) ' ';
   white-space: pre-wrap;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .add-text__field,

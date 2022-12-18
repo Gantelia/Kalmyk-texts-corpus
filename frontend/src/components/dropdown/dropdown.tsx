@@ -10,7 +10,7 @@ type DropdownProps = {
   options?: Genre[] | string[];
   label: string;
   id: DropdownType;
-  activeDropdown: DropdownType;
+  activeDropdown?: DropdownType;
   onChange: (value: string[] | null, id: DropdownType) => void;
 };
 
@@ -18,7 +18,7 @@ function Dropdown({
   options,
   label,
   id,
-  activeDropdown,
+  activeDropdown = DropdownType.Default,
   onChange
 }: DropdownProps) {
   return (

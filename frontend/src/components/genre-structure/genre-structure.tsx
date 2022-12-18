@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { LiteratureCards, LiteratureTable } from '../../mocks/mocks';
+import Document from '../../components/document/document';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import Cards from '../cards/cards';
 import Table from '../table/table';
@@ -26,6 +27,7 @@ function GenreStructure() {
         currentPage={page}
         onChange={handleChange}
       />
+      <Document />
     </section>
   );
 }

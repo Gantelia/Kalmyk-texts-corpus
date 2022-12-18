@@ -1,0 +1,33 @@
+@import '../../sass/variables.scss';
+
+.document {
+  font-family: 'PT Sant Caption', sans-serif;
+  margin-top: 16px;
+  background-color: $bg-light;
+  border-radius: 12px;
+  color: #000000;
+  padding: 42px 60px 32px;
+}
+
+.document__header {
+  font-size: 24px;
+  line-height: 31px;
+  display: block;
+}
+
+.document__author {
+  margin: 0;
+  margin-bottom: 31px;
+}
+
+.document__title {
+  font: inherit;
+  margin: 0;
+  margin-bottom: 31px;
+}
+
+.document__body {
+  white-space: pre-wrap;
+  font-size: 20px;
+  line-height: 26px;
+}

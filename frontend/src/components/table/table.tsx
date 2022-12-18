@@ -26,34 +26,40 @@ function Table({
       <table className="table">
         <caption className={className}>{heading}</caption>
         <thead className="table__row table__row--head">
-          <td className="table__cell">
-            <div className="table__container">Автор</div>
-          </td>
-          <td className="table__cell">
-            <div className="table__container">Название произведения</div>
-          </td>
-          <td className="table__cell">
-            <div className="table__container">Год&nbsp;издания</div>
-          </td>
-        </thead>
-        {creations.map(({ id, title, author, year }) => (
-          <tr className="table__row" key={id}>
-            <td className="table__cell">
-              <div className="table__container">{author}</div>
-            </td>
-            <td className="table__cell">
-              <div className="table__container">
-                <button className="table__button" type="button">
-                  {title}
-                </button>
-              </div>
-            </td>
-            <td className="table__cell">
-              <div className="table__container">{year}</div>
-            </td>
+          <tr>
+            <th className="table__cell">
+              <div className="table__container">Автор</div>
+            </th>
+            <th className="table__cell">
+              <div className="table__container">Название произведения</div>
+            </th>
+            <th className="table__cell">
+              <div className="table__container">Год&nbsp;издания</div>
+            </th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {creations.map(({ id, title, author, year }) => (
+            <tr className="table__row" key={id}>
+              <td className="table__cell">
+                <div className="table__container">{author}</div>
+              </td>
+              <td className="table__cell">
+                <div className="table__container">
+                  <button className="table__button" type="button">
+                    {title}
+                  </button>
+                </div>
+              </td>
+              <td className="table__cell">
+                <div className="table__container">{year}</div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
+
+      {/* Пагинация */}
       {pageCount > NO_PAGINATION_PAGE_COUNT && (
         <Pagination
           count={pageCount}

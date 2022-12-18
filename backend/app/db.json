@@ -1,0 +1,10 @@
+{
+  "db_cred":
+    {
+      "user": "postgres",
+      "password": "postgres",
+      "host": "corp_xal_db",
+      "port": 5432,
+      "database": "corpora_xal_db"
+    }
+}

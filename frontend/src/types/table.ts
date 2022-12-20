@@ -7,7 +7,7 @@ export type TableItem = {
   year: number | null;
 };
 
-export type LiteratureTable = {
+export type Table = {
   renderStyle: RenderType;
   page: 1;
   items: TableItem[];

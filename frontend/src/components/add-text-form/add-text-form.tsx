@@ -1,11 +1,12 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 import AddTextField from '../add-text-field/add-text-field';
+import FieldGroup from '../field-group/field-group';
 import Select from '../select/select';
 import './add-text-form.scss';
 
 function AddTextForm() {
-  const [dropdownValue, setDropdownValue] = useState<string[] | null>(null);
+  const [selectValue, setSelectValue] = useState<string | null>(null);
   const [fileText, setFileText] = useState('');
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -18,8 +19,8 @@ function AddTextForm() {
     textareaRef.current.value = fileText;
   }, [fileText]);
 
-  const handleDropdownChange = (value: string[] | null) => {
-    setDropdownValue(value);
+  const handleSelectChange = (value: string | null) => {
+    setSelectValue(value);
   };
 
   // Читает контент из загруженного файла
@@ -40,29 +41,13 @@ function AddTextForm() {
   return (
     <form className="add-text">
       <div className="add-text__container">
-        <Select />
-        <p className="add-text__group">
-          <input
-            className="add-text__author"
-            type="text"
-            id="author"
-            name="author"
-          />
-          <label className="add-text__author-label" htmlFor="author">
-            Выберите автора
-          </label>
-        </p>
-        <p className="add-text__group">
-          <input
-            className="add-text__author"
-            type="number"
-            id="year"
-            name="author"
-          />
-          <label className="add-text__author-label" htmlFor="author">
-            Введите год
-          </label>
-        </p>
+        <Select onChange={handleSelectChange} />
+        <FieldGroup inputType="text" id="author" required={false}>
+          Введите автора
+        </FieldGroup>
+        <FieldGroup inputType="number" id="year" required={false}>
+          Введите год
+        </FieldGroup>
         <AddTextField ref={textareaRef} content={fileText} />
       </div>
       <label className="add-text__text-label button" htmlFor="load-file">

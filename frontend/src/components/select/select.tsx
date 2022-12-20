@@ -3,13 +3,17 @@ import TextField from '@mui/material/TextField';
 
 import { GENRES } from '../../mocks/mocks';
 
-function Select() {
+type SelectProps = {
+  onChange: (value: string | null) => void;
+};
+
+function Select({ onChange }: SelectProps) {
   return (
     <Autocomplete
       className="select"
-      // onChange={(event: any, value: string | null) => {
-      //   onChange(value);
-      // }}
+      onChange={(event: any, value: string | null) => {
+        onChange(value);
+      }}
       options={
         GENRES?.map((option) =>
           typeof option === 'string' ? option : option.genre

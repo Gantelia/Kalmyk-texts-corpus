@@ -50,7 +50,7 @@ export const BREADCRUMB: Genre[] = [
 ];
 
 export const LiteratureCards = {
-  renderStyle: RenderType.Cards,
+  renderType: RenderType.Cards,
   items: [
     {
       id: 1,
@@ -81,7 +81,7 @@ export const LiteratureCards = {
 };
 
 export const LiteratureTable = {
-  renderStyle: RenderType.Table,
+  renderType: RenderType.Table,
   page: 1,
   items: [
     {

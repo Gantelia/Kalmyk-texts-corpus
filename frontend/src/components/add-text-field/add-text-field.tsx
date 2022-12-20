@@ -30,8 +30,8 @@ const AddTextField = forwardRef<HTMLTextAreaElement, AddTextFieldProps>(
         <label
           /* Доп. класс нужен, чтобы <label> не накладывался на текст,
            когда поле не пустое */
-          className={`add-text__textarea-label ${
-            text && 'text__load-label--float'
+          className={`label-placeholder add-text__textarea-label ${
+            text && 'label-placeholder--offset'
           }`}
           htmlFor="loaded-text"
         >

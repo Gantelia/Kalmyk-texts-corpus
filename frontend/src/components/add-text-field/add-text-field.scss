@@ -1,4 +1,5 @@
 @import '../../sass/variables.scss';
+@import '../../sass/common/label-placeholder.scss';
 
 .add-text__grow-wrap {
   position: relative;
@@ -34,29 +35,6 @@
 .add-text__field {
   resize: none;
   overflow: hidden;
-}
-
-.add-text__textarea-label {
-  font-family: 'PT Sans Caption', sans-serif;
-  font-size: 20px;
-  line-height: 26px;
-  color: #000000;
-  background-color: transparent;
-  position: absolute;
-  top: 17px;
-  left: 20px;
-  pointer-events: none;
-  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
-    max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-}
-
-.add-text__field:focus + .add-text__textarea-label,
-.add-text__field:active + .add-text__textarea-label,
-.text__load-label--float {
-  font-size: 16px;
-  line-height: 20px;
-  transform: translateY(-20px);
-  max-width: 200px;
 }
 
 .add-text__clear {

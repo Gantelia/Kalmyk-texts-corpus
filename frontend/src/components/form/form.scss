@@ -8,23 +8,6 @@
   row-gap: 16px;
 }
 
-.form__input {
-  padding: 17px 20px;
-  border-radius: 12px;
-  background-color: $bg-light;
-  border: none;
-  font-size: 20px;
-  line-height: 26px;
-  color: #000000;
-  width: 100%;
-
-  &::placeholder {
-    font-size: 20px;
-    line-height: 26px;
-    color: #000000;
-  }
-}
-
 .form__submit {
   width: 100%;
 }

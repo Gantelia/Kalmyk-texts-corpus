@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SelectType } from '../../const';
 
 import { AUTHORS, GENRES } from '../../mocks/mocks';
+import FieldGroup from '../field-group/field-group';
 import Multiselect from '../multiselect/multiselect';
 import './form.scss';
 
@@ -33,15 +34,9 @@ function Form() {
         onChange={onSelectChange}
         activeSelect={activeSelect}
       />
-      <input
-        className="form__input"
-        type="text"
-        id="search-by-text"
-        placeholder="Введите текст"
-      />
-      <label className="visually-hidden" htmlFor="search-by-text">
-        Поиск по тексту
-      </label>
+      <FieldGroup inputType="text" id="text" required={true}>
+        Введите текст
+      </FieldGroup>
       <button className="button form__submit" type="submit">
         Искать
       </button>

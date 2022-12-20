@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { usePathCheck } from '../../hooks/use-path-check';
 
 import { LiteratureCards, LiteratureTable } from '../../mocks/mocks';
-import Document from '../../components/document/document';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import Cards from '../cards/cards';
 import Table from '../table/table';
+import Text from '../text/text';
 
 function GenreStructure() {
   const [page, setPage] = useState(1);
+
+  const isMainPage = usePathCheck();
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -18,16 +21,18 @@ function GenreStructure() {
         Иерархическая структура жанров
       </h2>
       <Breadcrumb />
-      <Cards cards={LiteratureCards.items} />
-      <Table
-        heading={'Список произведений'}
-        className={'table__caption'}
-        creations={LiteratureTable.items}
-        pageCount={10}
-        currentPage={page}
-        onChange={handleChange}
-      />
-      <Document />
+      {isMainPage && <Cards cards={LiteratureCards.items} />}
+      {isMainPage && (
+        <Table
+          heading={'Список произведений'}
+          className={'table__caption'}
+          creations={LiteratureTable.items}
+          pageCount={10}
+          currentPage={page}
+          onChange={handleChange}
+        />
+      )}
+      {!isMainPage && <Text />}
     </section>
   );
 }

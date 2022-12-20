@@ -2,6 +2,7 @@ export enum AppRoute {
   Main = '/',
   About = '/about',
   AddText = '/addText',
+  Document = '/document/:id',
   NotFound = '*'
 }
 
@@ -13,8 +14,7 @@ export enum DropdownType {
 
 export enum RenderType {
   Cards = 'cards',
-  Table = 'table',
-  Text = 'text'
+  Table = 'table'
 }
 
 export const NARROW_LIST_CARD_COUNT = 4;

@@ -1,8 +1,9 @@
-import { TableItem } from '../../types/table-items';
+import { TableItem } from '../../types/table';
 import Pagination from '@mui/material/Pagination';
 import { NO_PAGINATION_PAGE_COUNT } from '../../const';
 
 import './table.scss';
+import { Link } from 'react-router-dom';
 
 type TableProps = {
   heading: string;
@@ -46,9 +47,9 @@ function Table({
               </td>
               <td className="table__cell">
                 <div className="table__container">
-                  <button className="table__button" type="button">
+                  <Link to={`/document/${id}`} className="table__link">
                     {title}
-                  </button>
+                  </Link>
                 </div>
               </td>
               <td className="table__cell">

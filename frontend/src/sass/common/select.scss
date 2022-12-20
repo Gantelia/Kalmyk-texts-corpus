@@ -1,12 +1,12 @@
 @import '../../sass/variables.scss';
 
-.dropdown {
+.select {
   background-color: $bg-light;
   width: 100%;
   border-radius: 12px;
 }
 
-.dropdown__input .MuiInputLabel-root {
+.select__input .MuiInputLabel-root {
   font-family: 'PT Sans Caption', sans-serif;
   font-size: 20px;
   line-height: 26px;
@@ -14,25 +14,25 @@
   padding-left: 6px;
 }
 
-.dropdown .MuiAutocomplete-endAdornment {
+.select .MuiAutocomplete-endAdornment {
   top: calc(50% - 18px);
 }
 
-.dropdown .MuiInputBase-root {
+.select .MuiInputBase-root {
   border-radius: 12px;
   font-family: 'PT Sans Caption', sans-serif;
   font-size: 20px;
   line-height: 38px;
 }
 
-.dropdown__input .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+.select__input .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
   color: #000000;
 }
 
-.dropdown__input .MuiSvgIcon-root {
+.select__input .MuiSvgIcon-root {
   fill: #484848;
 }
 
-.dropdown .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+.select .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: none;
 }

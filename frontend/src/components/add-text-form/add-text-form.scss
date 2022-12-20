@@ -1,12 +1,12 @@
 .add-text__container {
   display: grid;
-  grid-template-columns: 655px 1fr;
+  grid-template-columns: 360px auto auto;
   column-gap: 25px;
   row-gap: 16px;
   margin-bottom: 28px;
 }
 
-.add-text__load-label {
+.add-text__text-label {
   padding-left: 60px;
   padding-right: 60px;
   margin-right: 25px;

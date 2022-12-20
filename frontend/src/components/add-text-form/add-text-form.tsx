@@ -1,9 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-import { DropdownType } from '../../const';
-import { AUTHORS, GENRES } from '../../mocks/mocks';
 import AddTextField from '../add-text-field/add-text-field';
-import Dropdown from '../dropdown/dropdown';
+import Select from '../select/select';
 import './add-text-form.scss';
 
 function AddTextForm() {
@@ -24,7 +22,7 @@ function AddTextForm() {
     setDropdownValue(value);
   };
 
-  // Вытаскивает контент из загруженного файла
+  // Читает контент из загруженного файла
   const handleFileLoad = async (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
 
@@ -42,25 +40,37 @@ function AddTextForm() {
   return (
     <form className="add-text">
       <div className="add-text__container">
-        <Dropdown
-          options={GENRES}
-          label={'Выберите жанр'}
-          id={DropdownType.Genres}
-          onChange={handleDropdownChange}
-        />
-        <Dropdown
-          options={AUTHORS}
-          label={'Выберите автора'}
-          id={DropdownType.Authors}
-          onChange={handleDropdownChange}
-        />
+        <Select />
+        <p className="add-text__group">
+          <input
+            className="add-text__author"
+            type="text"
+            id="author"
+            name="author"
+          />
+          <label className="add-text__author-label" htmlFor="author">
+            Выберите автора
+          </label>
+        </p>
+        <p className="add-text__group">
+          <input
+            className="add-text__author"
+            type="number"
+            id="year"
+            name="author"
+          />
+          <label className="add-text__author-label" htmlFor="author">
+            Введите год
+          </label>
+        </p>
         <AddTextField ref={textareaRef} content={fileText} />
       </div>
-      <label className="add-text__load-label button" htmlFor="load-file">
+      <label className="add-text__text-label button" htmlFor="load-file">
         <input
           className="visually-hidden"
           type="file"
           id="load-file"
+          name="text"
           accept=".txt"
           onChange={(evt) => handleFileLoad(evt)}
         />

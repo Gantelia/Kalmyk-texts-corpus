@@ -17,9 +17,7 @@ function GenreStructure() {
   };
   return (
     <section className="genre-structure">
-      <h2 className="title genre-structure__title">
-        Иерархическая структура жанров
-      </h2>
+      <h2 className="title">Иерархическая структура жанров</h2>
       <Breadcrumb />
       {isMainPage && <Cards cards={LiteratureCards.items} />}
       {isMainPage && (

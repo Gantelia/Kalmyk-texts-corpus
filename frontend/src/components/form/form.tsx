@@ -1,37 +1,37 @@
 import { useState } from 'react';
-import { DropdownType } from '../../const';
+import { SelectType } from '../../const';
 
 import { AUTHORS, GENRES } from '../../mocks/mocks';
-import Dropdown from '../dropdown/dropdown';
+import Multiselect from '../multiselect/multiselect';
 import './form.scss';
 
 function Form() {
   // Одновременно можно искать только в одном выпадающем списке.
   // Жанры и авторы не должны перекрещиваться в запросе.
-  const [activeDropdown, setActiveDropdown] = useState(DropdownType.Default);
-  const [dropdownValue, setDropdownValue] = useState<string[] | null>(null);
+  const [activeSelect, setActiveSelect] = useState(SelectType.Default);
+  const [selectValue, setSelectValue] = useState<string[] | null>(null);
 
-  const onDropdownChange = (value: string[] | null, id: DropdownType) => {
-    const activeDropdown = value?.length ? id : DropdownType.Default;
-    setActiveDropdown(activeDropdown);
-    setDropdownValue(value);
+  const onSelectChange = (value: string[] | null, id: SelectType) => {
+    const activeDropdown = value?.length ? id : SelectType.Default;
+    setActiveSelect(activeDropdown);
+    setSelectValue(value);
   };
 
   return (
     <form className="form">
-      <Dropdown
+      <Multiselect
         options={GENRES}
         label={'Выберите жанр'}
-        id={DropdownType.Genres}
-        onChange={onDropdownChange}
-        activeDropdown={activeDropdown}
+        id={SelectType.Genres}
+        onChange={onSelectChange}
+        activeSelect={activeSelect}
       />
-      <Dropdown
+      <Multiselect
         options={AUTHORS}
         label={'Выберите автора'}
-        id={DropdownType.Authors}
-        onChange={onDropdownChange}
-        activeDropdown={activeDropdown}
+        id={SelectType.Authors}
+        onChange={onSelectChange}
+        activeSelect={activeSelect}
       />
       <input
         className="form__input"

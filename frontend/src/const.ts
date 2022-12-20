@@ -6,7 +6,7 @@ export enum AppRoute {
   NotFound = '*'
 }
 
-export enum DropdownType {
+export enum SelectType {
   Genres = 'genres',
   Authors = 'authors',
   Default = ''

@@ -55,27 +55,27 @@ export const LiteratureCards = {
     {
       id: 1,
       title: 'Фольклор',
-      picture: 'assets/icon-folklore.png'
+      picture: '/assets/icon-folklore.png'
     },
     {
       id: 2,
       title: 'Поэзия',
-      picture: 'assets/icon-poetry.png'
+      picture: '/assets/icon-poetry.png'
     },
     {
       id: 3,
       title: 'Проза',
-      picture: 'assets/icon-prose.png'
+      picture: '/assets/icon-prose.png'
     },
     {
       id: 4,
       title: 'Религиозная литература',
-      picture: 'assets/icon-religion.png'
+      picture: '/assets/icon-religion.png'
     },
     {
       id: 5,
       title: 'Манга',
-      picture: 'assets/icon-books.png'
+      picture: '/assets/icon-books.png'
     }
   ]
 };

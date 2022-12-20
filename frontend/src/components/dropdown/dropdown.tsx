@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
 import { Genre } from '../../types/genre';
-import './dropdown.scss';
 import { DropdownType } from '../../const';
+import './dropdown.scss';
 
 type DropdownProps = {
   options?: Genre[] | string[];

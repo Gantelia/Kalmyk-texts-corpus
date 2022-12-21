@@ -8,7 +8,7 @@ export type TableItem = {
 };
 
 export type Table = {
-  renderStyle: RenderType;
-  page: 1;
+  renderType: RenderType;
+  page: number;
   items: TableItem[];
 };

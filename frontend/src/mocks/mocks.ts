@@ -1,4 +1,5 @@
 import { RenderType } from '../const';
+import { Cards } from '../types/cards';
 import { Genre } from '../types/genre';
 
 export const GENRES = [
@@ -49,7 +50,7 @@ export const BREADCRUMB: Genre[] = [
   { id: 201, genre: 'И немного былин' }
 ];
 
-export const LiteratureCards = {
+export const LiteratureCards: Cards = {
   renderType: RenderType.Cards,
   items: [
     {

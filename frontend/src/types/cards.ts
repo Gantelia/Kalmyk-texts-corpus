@@ -6,7 +6,7 @@ export type CardItem = {
   picture: string;
 };
 
-export type LiteratureCards = {
-  renderStyle: RenderType;
+export type Cards = {
+  renderType: RenderType;
   items: CardItem[];
 };

@@ -1,8 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
+import { Genre } from '../types/genre';
 
-export const getGenres = createAction('autoSearch/getGenres');
+export const getGenres = createAction<Genre[]>('autoSearch/getGenres');
 
-export const getAuthors = createAction('autoSearch/getAuthors');
+export const getAuthors = createAction<string[]>('autoSearch/getAuthors');
 
 export const getSearchResult = createAction('autoSearch/getSearchResult');
 

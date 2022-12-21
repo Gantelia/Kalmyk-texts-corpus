@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import App from './components/app/App';
 import './index.scss';
+import { fetchSearchMenu } from './store/api-actions/search-actions';
+
+store.dispatch(fetchSearchMenu());
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

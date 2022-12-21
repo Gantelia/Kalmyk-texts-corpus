@@ -7,6 +7,7 @@ import {
   LiteratureTable,
   document
 } from '../mocks/mocks';
+import { Genre } from '../types/genre';
 
 import {
   addText,
@@ -18,8 +19,8 @@ import {
 } from './actions';
 
 const initialState = {
-  genres: GENRES,
-  authors: AUTHORS,
+  genres: [] as Genre[],
+  authors: [] as string[],
   searchResult: LiteratureTable,
   hierarchy: LiteratureCards,
   breadcrumb: BREADCRUMB,
@@ -28,8 +29,8 @@ const initialState = {
 };
 
 const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(getGenres, (state) => {
-    state.genres = GENRES;
+  builder.addCase(getGenres, (state, action) => {
+    state.genres = action.payload;
   });
   builder.addCase(getAuthors, (state) => {
     state.authors = AUTHORS;

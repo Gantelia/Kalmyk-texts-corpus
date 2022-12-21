@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SelectType } from '../../const';
 import { useAppSelector } from '../../hooks';
 
-import { AUTHORS, GENRES } from '../../mocks/mocks';
+import { Genre } from '../../types/genre';
 import FieldGroup from '../field-group/field-group';
 import Multiselect from '../multiselect/multiselect';
 import './form.scss';
@@ -11,11 +11,13 @@ function Form() {
   // Одновременно можно искать только в одном выпадающем списке.
   // Жанры и авторы не должны перекрещиваться в запросе.
   const [activeSelect, setActiveSelect] = useState(SelectType.Default);
-  const [selectValue, setSelectValue] = useState<string[] | null>(null);
+  const [selectValue, setSelectValue] = useState<string[] | Genre[] | null>(
+    null
+  );
 
   const { genres, authors } = useAppSelector((state) => state);
 
-  const onSelectChange = (value: string[] | null, id: SelectType) => {
+  const onSelectChange = (value: string[] | Genre[] | null, id: SelectType) => {
     const activeDropdown = value?.length ? id : SelectType.Default;
     setActiveSelect(activeDropdown);
     setSelectValue(value);

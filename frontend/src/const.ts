@@ -20,3 +20,10 @@ export enum RenderType {
 export const NARROW_LIST_CARD_COUNT = 4;
 
 export const NO_PAGINATION_PAGE_COUNT = 1;
+
+export enum APIRoute {
+  SearchMenu = '/menu',
+  Search = '/search',
+  HierarchyItems = '/data',
+  Document = '/document'
+}

@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from db import DATABASE_STRING, query_genres, query_authors
 from corp_xal import CorporaXal
-import json
 
 app = FastAPI()
 
@@ -29,8 +28,18 @@ async def read_menu():
 
 
 @app.get("/data/")
-async def read_data(g_id: Union[int, None] = None, page: Union[str, None] = None):
+async def read_data(g_id: Union[int, None] = None, page: Union[int, None] = None):
     return {"response": get_data(g_id, page)}
+
+@app.get("/search/")
+async def read_authors_and_genres(genres: Union[str, None] = None,
+                                  authors: Union[str, None] = None,
+                                  words: Union[str, None] = None,
+                                  page: Union[int, None] = None):
+    if genres:
+        return {"response": search_data_genres(genres, words, page)}
+    if authors:
+        return {"response": search_data_authors(authors, words, page)}
 
 
 @app.get("/document/{text_id}")
@@ -70,11 +79,39 @@ def get_data(g_id, page):
     print(output)
     return output
 
+def search_data_genres(genres, words, page):
+    if not page:
+        page = 0
+    corp = CorporaXal()
+    corp.connect(dsn=DATABASE_STRING)
+    a = list(map(str.strip, genres.split(',')))
+    searchable_list = []
+    for i in a:
+        g = corp.get_children_by_id(g_id=i)
+        searchable_list.extend(g)
+    no_dups = set(searchable_list)
+    searchable_jenres = ', '.join("'" + str(item) + "'" for item in no_dups)
+    print(searchable_jenres)
+    report = corp.get_search(g_list=searchable_jenres, word=words, p_num=page)
+    return report
+
+
+def search_data_authors(authors, words, page):
+    if not page:
+        page = 0
+    corp = CorporaXal()
+    corp.connect(dsn=DATABASE_STRING)
+    a = list(map(str.strip, authors.split(',')))
+    searchable_authors = ', '.join("'" + item + "'" for item in a)
+    report = corp.get_search_authors(authors=searchable_authors, word=words, p=page)
+    return report
+
+
 def get_document(text_id):
     corp = CorporaXal()
     corp.connect(dsn=DATABASE_STRING)
     document = corp.get_text(t_id=text_id)
     parents = corp.get_parents(genre=document['genre'])
     corp.close_conn()
-    doc = dict(breadcrumbs=parents, document=document)
+    doc = dict(breadcrumbs=parents, RenderType="text", document=document)
     return doc

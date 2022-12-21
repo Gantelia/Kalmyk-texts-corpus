@@ -82,17 +82,57 @@ class CorporaXal:
                       f"OFFSET {offset};"
         self.cursor.execute(query_texts)
         t = self.cursor.fetchall()
-
         texts_count = self.cursor.rowcount
         pages = texts_count // a
-        #text_list = json.dumps(t, ensure_ascii=False)
         return {"texts_count": texts_count, "pages": pages, "table": t}
 
     def get_text(self, t_id):
-        query_text = f"SELECT text_id, author, genre, text_title, pub_year, text_body FROM corp_texts WHERE text_id = {t_id};"
+        query_text = f"""SELECT text_id, author, genre, text_title, pub_year, text_body
+                         FROM corp_texts
+                         WHERE text_id = {t_id};"""
         self.cursor.execute(query_text)
         text = self.cursor.fetchone()
         return text
+
+    def get_search(self, g_list, word, p_num):
+        if not p_num:
+            p_num = 0
+        a = 20
+        search_query = f"""SELECT text_id, author, text_title, genre, pub_year
+                           FROM corp_texts
+                           WHERE corp_texts.text_body @@ to_tsquery('kalmyk', '{word}') AND genre in ({g_list}) 
+                           OFFSET {p_num};"""
+        self.cursor.execute(search_query)
+        search_result = self.cursor.fetchall()
+        result_count = self.cursor.rowcount
+        pages = result_count // a
+        return {"result_count": result_count, "pages": pages, "RenderType": "table", "table": search_result}
+
+    def get_children_by_id(self, g_id):
+        query_child = f"""SELECT g_id
+                          FROM corp_genres c
+                          WHERE g_hierarchy ~
+                              (select (cn.g_hierarchy::varchar || '.*')::lquery from corp_genres cn 
+                              where cn.g_id = {g_id})
+                          and not exists
+                            (select 1 from corp_genres cc where cc.g_hierarchy ~ 
+                            (c.g_hierarchy::varchar || '.*{{1}}')::lquery);"""
+        self.cursor.execute(query_child)
+        g_items = self.cursor.fetchall()
+        map_iterator = map(lambda x: (x['g_id']), g_items)
+        return map_iterator
+
+    def get_search_authors(self, authors, word, p):
+        a = 20
+        search_query = f"""SELECT text_id, author, text_title, genre, pub_year
+                           FROM corp_texts
+                           WHERE corp_texts.text_body @@ to_tsquery('kalmyk', '{word}') AND author in ({authors}) 
+                           ORDER BY author DESC OFFSET {p};"""
+        self.cursor.execute(search_query)
+        search_result = self.cursor.fetchall()
+        result_count = self.cursor.rowcount
+        pages = result_count // a
+        return {"result_count": result_count, "pages": pages, "RenderType": "table", "table": search_result}
 
     def close_conn(self):
         self.cursor.close()

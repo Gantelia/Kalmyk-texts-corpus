@@ -1,8 +1,11 @@
-import { document } from '../../mocks/mocks';
+import { useAppSelector } from '../../hooks';
 import './text.scss';
 
 function Text() {
+  const { document } = useAppSelector((state) => state);
+
   const { author, title, year, body } = document;
+
   return (
     <article className="text">
       <header className="text__header">

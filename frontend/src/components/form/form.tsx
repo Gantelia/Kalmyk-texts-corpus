@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SelectType } from '../../const';
+import { useAppSelector } from '../../hooks';
 
 import { AUTHORS, GENRES } from '../../mocks/mocks';
 import FieldGroup from '../field-group/field-group';
@@ -12,6 +13,8 @@ function Form() {
   const [activeSelect, setActiveSelect] = useState(SelectType.Default);
   const [selectValue, setSelectValue] = useState<string[] | null>(null);
 
+  const { genres, authors } = useAppSelector((state) => state);
+
   const onSelectChange = (value: string[] | null, id: SelectType) => {
     const activeDropdown = value?.length ? id : SelectType.Default;
     setActiveSelect(activeDropdown);
@@ -21,14 +24,14 @@ function Form() {
   return (
     <form className="form">
       <Multiselect
-        options={GENRES}
+        options={genres}
         label={'Выберите жанр'}
         id={SelectType.Genres}
         onChange={onSelectChange}
         activeSelect={activeSelect}
       />
       <Multiselect
-        options={AUTHORS}
+        options={authors}
         label={'Выберите автора'}
         id={SelectType.Authors}
         onChange={onSelectChange}

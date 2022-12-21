@@ -1,55 +1,54 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addText } from '../../store/actions';
 
 import './add-text-field.scss';
 
-type AddTextFieldProps = {
-  content: string;
-};
+function AddTextField() {
+  const [input, setInput] = useState('');
 
-const AddTextField = forwardRef<HTMLTextAreaElement, AddTextFieldProps>(
-  ({ content }, ref) => {
-    const [text, setText] = useState('');
+  const dispatch = useAppDispatch();
+  const { text } = useAppSelector((store) => store);
 
-    /* Обновляет состояние поля ввода, чтобы <label> не падал на текст,
+  /* Обновляет состояние поля ввода, чтобы <label> не падал на текст,
        если текст загружен из файла */
-    useEffect(() => {
-      content && setText(content);
-    }, [content]);
+  useEffect(() => {
+    setInput(text);
+  }, [text]);
 
-    // <div> растягивает <textarea> на высоту содержимого
-    return (
-      <div className="add-text__grow-wrap" data-replicated-value={text}>
-        <textarea
-          className="add-text__field"
-          id="loaded-text"
-          ref={ref}
-          onChange={({ target }) => setText(target.value)}
-          value={text}
-          required
-        />
-        <label
-          /* Доп. класс нужен, чтобы <label> не накладывался на текст,
+  // <div> растягивает <textarea> на высоту содержимого
+  return (
+    <div className="add-text__grow-wrap" data-replicated-value={input}>
+      <textarea
+        className="add-text__field"
+        onChange={({ target }) => setInput(target.value)}
+        onBlur={({ target }) => dispatch(addText(target.value))}
+        value={input}
+        required
+      />
+      <label
+        /* Доп. класс нужен, чтобы <label> не накладывался на текст,
            когда поле не пустое */
-          className={`label-placeholder add-text__textarea-label ${
-            text && 'label-placeholder--offset'
-          }`}
-          htmlFor="loaded-text"
+        className={`label-placeholder add-text__textarea-label ${
+          input && 'label-placeholder--offset'
+        }`}
+        htmlFor="loaded-text"
+      >
+        Введите текст
+      </label>
+      {input && (
+        <button
+          className="add-text__clear"
+          type="button"
+          onClick={() => dispatch(addText(''))}
         >
-          Введите текст
-        </label>
-        {text && (
-          <button
-            className="add-text__clear"
-            type="button"
-            onClick={() => setText('')}
-          >
-            <span className="visually-hidden">Очистить</span>
-          </button>
-        )}
-      </div>
-    );
-  }
-);
+          <span className="visually-hidden">Очистить</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 // именование компонента нужно для дебага
 AddTextField.displayName = 'Textarea';
 

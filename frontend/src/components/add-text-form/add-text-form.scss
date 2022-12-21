@@ -1,8 +1,6 @@
-@import '../../sass/common/field.scss';
-
 .add-text__container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 655px auto;
   column-gap: 25px;
   row-gap: 16px;
   margin-bottom: 28px;

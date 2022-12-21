@@ -27,4 +27,3 @@ query_genres = """
 """
 
 query_authors = "SELECT DISTINCT author FROM corp_texts WHERE author IS NOT NULL;"
-

@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from db import DATABASE_STRING, query_genres, query_authors
 from corp_xal import CorporaXal
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -40,6 +41,19 @@ async def read_authors_and_genres(genres: Union[str, None] = None,
         return {"response": search_data_genres(genres, words, page)}
     if authors:
         return {"response": search_data_authors(authors, words, page)}
+
+class Text(BaseModel):
+    author: Union[str, None] = None
+    text_title: str
+    pub_year: Union[int, None] = None
+    genre: str
+    text_body: str
+
+@app.post("/add_text/")
+async def add_text(text: Text):
+    text_dic = text.dict()
+    insert_document(data_dic=text_dic)
+    return {"message": "Документ добавлен"}
 
 
 @app.get("/document/{text_id}")
@@ -115,3 +129,12 @@ def get_document(text_id):
     corp.close_conn()
     doc = dict(breadcrumbs=parents, RenderType="text", document=document)
     return doc
+
+
+def insert_document(data_dic):
+    corp = CorporaXal()
+    corp.connect(dsn=DATABASE_STRING)
+    corp.insert_text(data=data_dic)
+    return True
+
+

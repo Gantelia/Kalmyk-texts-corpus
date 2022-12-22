@@ -134,6 +134,18 @@ class CorporaXal:
         pages = result_count // a
         return {"result_count": result_count, "pages": pages, "RenderType": "table", "table": search_result}
 
+    def insert_text(self, data):
+        columns = ','.join(data.keys())
+        values = tuple(x for x in data.values())
+        ins = f"INSERT INTO corp_texts({columns}) VALUES {values};"
+        try:
+            self.cursor.execute(ins)
+            self.connection.commit()
+
+        except Exception as e:
+            print(f"Failed to insert: {e}")
+
+
     def close_conn(self):
         self.cursor.close()
         self.connection.close()

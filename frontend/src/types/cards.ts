@@ -10,3 +10,10 @@ export type Cards = {
   renderType: RenderType;
   items: CardItem[];
 };
+
+export type ServerCard = {
+  g_id: 17;
+  g_short_name: string;
+  g_picture: string;
+  g_full_name: string;
+};

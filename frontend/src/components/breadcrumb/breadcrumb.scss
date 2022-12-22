@@ -33,11 +33,6 @@
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-  &--active {
-    background-color: #98abc1;
-    color: #ffffff;
-  }
-
   &:hover {
     color: #ffffff;
     background-color: #4a688c;
@@ -47,4 +42,9 @@
     color: #ffffff;
     background-color: #26538c;
   }
+}
+
+.breadcrumb__item:last-child .breadcrumb__button {
+  background-color: #98abc1;
+  color: #ffffff;
 }

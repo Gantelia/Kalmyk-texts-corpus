@@ -37,6 +37,3 @@ function FieldGroup({
 }
 
 export default FieldGroup;
-function setState(arg0: string): [any, any] {
-  throw new Error('Function not implemented.');
-}

@@ -24,6 +24,6 @@ export const NO_PAGINATION_PAGE_COUNT = 1;
 export enum APIRoute {
   SearchMenu = '/menu',
   Search = '/search',
-  HierarchyItems = '/data',
+  Hierarchy = '/data',
   Document = '/document'
 }

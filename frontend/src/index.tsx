@@ -7,8 +7,10 @@ import { store } from './store';
 import App from './components/app/App';
 import './index.scss';
 import { fetchSearchMenu } from './store/api-actions/search-actions';
+import { fetchHierarchy } from './store/api-actions/hierarchy-actions';
 
 store.dispatch(fetchSearchMenu());
+store.dispatch(fetchHierarchy(''));
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

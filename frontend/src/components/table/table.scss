@@ -14,6 +14,13 @@
   text-align: left;
 }
 
+.table__empty {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 700;
+  color: $basic-dark;
+}
+
 .table__caption {
   font-size: 24px;
   line-height: 31px;
@@ -103,16 +110,16 @@
 
 // pagination
 
-.main--index .MuiPagination-root {
+.main .MuiPagination-root {
   display: flex;
 }
 
-.main--index .MuiPagination-ul {
+.main .MuiPagination-ul {
   width: auto;
   margin: 0 auto;
 }
 
-.main--index .MuiPaginationItem-root {
+.main .MuiPaginationItem-root {
   background-color: #ffffff;
   color: #4e4e53;
   font-family: 'PT Sans Caption', sans-serif;

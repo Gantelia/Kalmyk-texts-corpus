@@ -4,7 +4,7 @@ import { APIRoute } from '../../const';
 import { Genre, SearchMenu } from '../../types/genre';
 import { getAuthors, getGenres } from '../actions';
 
-const adaptMenuToClient = (
+const adaptToClient = (
   menu: SearchMenu
 ): { genres: Genre[]; authors: string[] } => {
   const { genres, authors } = menu.response;
@@ -18,7 +18,7 @@ export const fetchSearchMenu = createAsyncThunk(
   'search/fetchSearchMenu',
   async () => {
     const { data } = await api.get<SearchMenu>(APIRoute.SearchMenu);
-    const adaptedMenu = adaptMenuToClient(data);
+    const adaptedMenu = adaptToClient(data);
     store.dispatch(getGenres(adaptedMenu.genres));
     store.dispatch(getAuthors(adaptedMenu.authors));
   }

@@ -4,24 +4,30 @@ import { NO_PAGINATION_PAGE_COUNT } from '../../const';
 
 import './table.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { fetchHierarchy } from '../../store/api-actions/hierarchy-actions';
 
 type TableProps = {
   heading: string;
   className: string;
   creations: TableItem[];
   pageCount: number;
-  currentPage: number;
-  onChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 };
 
-function Table({
-  heading,
-  className,
-  creations,
-  pageCount,
-  currentPage,
-  onChange
-}: TableProps) {
+function Table({ heading, className, creations, pageCount }: TableProps) {
+  const [page, setPage] = useState(1);
+  const dispatch = useAppDispatch();
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    dispatch(fetchHierarchy(`?/page=${value}`));
+  };
+
+  if (!creations.length) {
+    return <p className="table__empty">Ничего не найдено</p>;
+  }
+
   return (
     <>
       <table className="table">
@@ -40,10 +46,10 @@ function Table({
           </tr>
         </thead>
         <tbody>
-          {creations.map(({ id, title, author, year }) => (
+          {creations?.map(({ id, title, author, year }) => (
             <tr className="table__row" key={id}>
               <td className="table__cell">
-                <div className="table__container">{author}</div>
+                <div className="table__container">{author ? author : ''}</div>
               </td>
               <td className="table__cell">
                 <div className="table__container">
@@ -53,7 +59,7 @@ function Table({
                 </div>
               </td>
               <td className="table__cell">
-                <div className="table__container">{year}</div>
+                <div className="table__container">{year ? year : ''}</div>
               </td>
             </tr>
           ))}
@@ -66,8 +72,8 @@ function Table({
           count={pageCount}
           variant="outlined"
           shape="rounded"
-          page={currentPage}
-          onChange={onChange}
+          page={page}
+          onChange={handleChange}
         />
       )}
     </>

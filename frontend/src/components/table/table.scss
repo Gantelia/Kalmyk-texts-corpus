@@ -15,10 +15,11 @@
 }
 
 .table__empty {
-  font-size: 26px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 24px;
   font-weight: 700;
   color: $basic-dark;
+  margin: 0;
 }
 
 .table__caption {

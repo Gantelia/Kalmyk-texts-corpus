@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react';
+import { forwardRef, LegacyRef, PropsWithChildren, useState } from 'react';
 
 import './field-group.scss';
 
@@ -9,12 +9,10 @@ type FieldGroupProps = PropsWithChildren<{
   required: boolean;
 }>;
 
-function FieldGroup({
-  inputType,
-  id,
-  children,
-  required = false
-}: FieldGroupProps) {
+function FieldGroup(
+  { inputType, id, children, required = false }: FieldGroupProps,
+  ref: LegacyRef<HTMLInputElement>
+) {
   const [value, setValue] = useState<string | number>('');
 
   return (
@@ -23,6 +21,7 @@ function FieldGroup({
         className="field field-group__input"
         type={inputType}
         id={id}
+        ref={ref}
         required={required}
         onChange={({ target }) => setValue(target.value)}
       />
@@ -37,3 +36,8 @@ function FieldGroup({
 }
 
 export default FieldGroup;
+
+export const Input = forwardRef(FieldGroup);
+
+// именование компонента нужно для дебага
+// AddTextField.displayName = 'Textarea';

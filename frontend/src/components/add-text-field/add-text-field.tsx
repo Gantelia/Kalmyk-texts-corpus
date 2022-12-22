@@ -49,7 +49,4 @@ function AddTextField() {
   );
 }
 
-// именование компонента нужно для дебага
-AddTextField.displayName = 'Textarea';
-
 export default AddTextField;

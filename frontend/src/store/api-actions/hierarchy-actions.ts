@@ -39,7 +39,7 @@ const adaptToClient = (hierarchy: any): Hierarchy => {
   };
 };
 
-export const fetchHierarchy = createAsyncThunk<
+export const fetchHierarchyAction = createAsyncThunk<
   void,
   string,
   {
@@ -47,7 +47,10 @@ export const fetchHierarchy = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('hierarchy/fetchHierarchy', async (parameter, { dispatch, extra: api }) => {
-  const { data } = await api.get(`${APIRoute.Hierarchy}${parameter}`);
-  dispatch(getHierarchy(adaptToClient(data.response)));
-});
+>(
+  'hierarchy/fetchHierarchyAction',
+  async (parameter, { dispatch, extra: api }) => {
+    const { data } = await api.get(`${APIRoute.Hierarchy}${parameter}`);
+    dispatch(getHierarchy(adaptToClient(data.response)));
+  }
+);

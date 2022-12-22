@@ -1,12 +1,12 @@
-import { TableItem } from '../../types/table';
-import Pagination from '@mui/material/Pagination';
-import { NO_PAGINATION_PAGE_COUNT } from '../../const';
-
-import './table.scss';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { fetchHierarchy } from '../../store/api-actions/hierarchy-actions';
+import { Link } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+
+import { TableItem } from '../../types/table';
+import { NO_PAGINATION_PAGE_COUNT } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import './table.scss';
 
 type TableProps = {
   heading: string;
@@ -17,15 +17,21 @@ type TableProps = {
 
 function Table({ heading, className, creations, pageCount }: TableProps) {
   const [page, setPage] = useState(1);
+
   const dispatch = useAppDispatch();
+  const { isMessage } = useAppSelector((state) => state);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
-    dispatch(fetchHierarchy(`?/page=${value}`));
+    dispatch(fetchHierarchyAction(`?/page=${value}`));
   };
 
-  if (!creations.length) {
+  if (isMessage && (!creations || !creations.length)) {
     return <p className="table__empty">Ничего не найдено</p>;
+  }
+
+  if (!isMessage && (!creations || !creations.length)) {
+    return null;
   }
 
   return (

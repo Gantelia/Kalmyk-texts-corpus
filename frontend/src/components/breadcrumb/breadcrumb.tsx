@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { Genre } from '../../types/genre';
 import { useAppDispatch } from '../../hooks';
-import { fetchHierarchy } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
 
 type BreadcrumbProps = {
   items: Genre[];
@@ -23,7 +23,7 @@ function Breadcrumb({ items }: BreadcrumbProps) {
             <button
               className="breadcrumb__button"
               type="button"
-              onClick={() => dispatch(fetchHierarchy(`/?g_id=${id}`))}
+              onClick={() => dispatch(fetchHierarchyAction(`/?g_id=${id}`))}
             >
               {genre}
             </button>
@@ -32,7 +32,7 @@ function Breadcrumb({ items }: BreadcrumbProps) {
             <Link
               to={AppRoute.Main}
               className="breadcrumb__button"
-              onClick={() => dispatch(fetchHierarchy(`/?g_id=${id}`))}
+              onClick={() => dispatch(fetchHierarchyAction(`/?g_id=${id}`))}
             >
               {genre}
             </Link>

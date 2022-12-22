@@ -1,6 +1,6 @@
 import { NARROW_LIST_CARD_COUNT } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { fetchHierarchy } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
 import { CardItem } from '../../types/cards';
 import './cards.scss';
 
@@ -19,7 +19,7 @@ function Cards({ cards }: CardsProps) {
           <button
             className="cards__button"
             type="button"
-            onClick={() => dispatch(fetchHierarchy(`/?g_id=${id}`))}
+            onClick={() => dispatch(fetchHierarchyAction(`/?g_id=${id}`))}
           >
             <img
               className="card__image"

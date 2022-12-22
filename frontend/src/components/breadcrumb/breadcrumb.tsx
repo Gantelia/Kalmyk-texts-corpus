@@ -2,22 +2,19 @@ import './breadcrumb.scss';
 import { usePathCheck } from '../../hooks/use-path-check';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { Genre } from '../../types/genre';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import { sortItems } from './breadcrumb-utils';
 
-type BreadcrumbProps = {
-  items: Genre[];
-};
-
-function Breadcrumb({ items }: BreadcrumbProps) {
+function Breadcrumb() {
   const isMainPage = usePathCheck();
 
   const dispatch = useAppDispatch();
+  const { breadcrumb } = useAppSelector((state) => state);
 
   return (
     <ul className="breadcrumb">
-      {items.map(({ id, genre }) => (
+      {sortItems(breadcrumb).map(({ id, genre }) => (
         <li className="breadcrumb__item" key={id}>
           {isMainPage && (
             <button

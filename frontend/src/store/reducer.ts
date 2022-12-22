@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { AUTHORS, LiteratureTable, document } from '../mocks/mocks';
+import { AUTHORS } from '../mocks/mocks';
 import { Genre } from '../types/genre';
+import { Document } from '../types/document';
 import { Hierarchy } from '../types/hierarchy';
 import { Table } from '../types/table';
 
@@ -18,8 +19,9 @@ const initialState = {
   authors: [] as string[],
   searchResult: {} as Table,
   hierarchy: {} as Hierarchy,
+  breadcrumb: [] as Genre[],
   isMessage: false,
-  document,
+  document: <null | Document>null,
   text: ''
 };
 
@@ -36,9 +38,12 @@ const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(getHierarchy, (state, action) => {
     state.hierarchy = action.payload;
+    state.breadcrumb = action.payload.breadcrumb;
+    state.isMessage = state.breadcrumb.length === 1 ? false : true;
   });
-  builder.addCase(getDocument, (state) => {
-    state.document = document;
+  builder.addCase(getDocument, (state, action) => {
+    state.document = action.payload.document;
+    state.breadcrumb = action.payload.breadcrumb;
   });
   builder.addCase(addText, (state, action) => {
     state.text = action.payload;

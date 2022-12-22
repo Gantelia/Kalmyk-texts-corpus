@@ -5,15 +5,13 @@ import { ServerCard } from '../../types/cards';
 import { Hierarchy } from '../../types/hierarchy';
 import { AppDispatch, State } from '../../types/state';
 import { getHierarchy } from '../actions';
+import { adaptBreadcrumb } from '../utils';
 
 const adaptToClient = (hierarchy: any): Hierarchy => {
   if ('children' in hierarchy) {
     const { breadcrumbs, RenderType, children } = hierarchy;
     return {
-      breadcrumb: breadcrumbs.map((breadcrumb: any) => ({
-        id: breadcrumb.g_id,
-        genre: breadcrumb.g_short_name
-      })),
+      breadcrumb: adaptBreadcrumb(breadcrumbs),
       renderType: RenderType,
       items: children.map((item: ServerCard) => ({
         id: item.g_id,
@@ -24,10 +22,7 @@ const adaptToClient = (hierarchy: any): Hierarchy => {
   }
   const { breadcrumbs, RenderType, table } = hierarchy;
   return {
-    breadcrumb: breadcrumbs.map((breadcrumb: any) => ({
-      id: breadcrumb.g_id,
-      genre: breadcrumb.g_short_name
-    })),
+    breadcrumb: adaptBreadcrumb(breadcrumbs),
     renderType: RenderType,
     pages: table.pages,
     items: table.table.map((item: any) => ({

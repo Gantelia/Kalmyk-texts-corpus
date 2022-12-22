@@ -10,12 +10,11 @@ import './table.scss';
 
 type TableProps = {
   heading: string;
-  className: string;
   creations: TableItem[];
   pageCount: number;
 };
 
-function Table({ heading, className, creations, pageCount }: TableProps) {
+function Table({ heading, creations, pageCount }: TableProps) {
   const [page, setPage] = useState(1);
 
   const dispatch = useAppDispatch();
@@ -37,7 +36,7 @@ function Table({ heading, className, creations, pageCount }: TableProps) {
   return (
     <>
       <table className="table">
-        <caption className={className}>{heading}</caption>
+        <caption className="table__caption">{heading}</caption>
         <thead className="table__row table__row--head">
           <tr>
             <th className="table__cell">

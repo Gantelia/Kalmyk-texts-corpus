@@ -8,10 +8,10 @@ import Cards from '../cards/cards';
 import {
   checkTableType,
   getCardsType,
-  getTableType,
-  sortItems
-} from './genre-structure-utils';
+  getTableType
+} from '../breadcrumb/breadcrumb-utils';
 import Table from '../table/table';
+import './genre-structure.scss';
 
 function GenreStructure() {
   const { hierarchy } = useAppSelector((state) => state);
@@ -21,14 +21,13 @@ function GenreStructure() {
   return (
     <section className="genre-structure">
       <h2 className="title">Иерархическая структура жанров</h2>
-      <Breadcrumb items={sortItems(hierarchy.breadcrumb)} />
+      <Breadcrumb />
       {isMainPage && hierarchy.renderType === RenderType.Cards && (
         <Cards cards={getCardsType(hierarchy.items)} />
       )}
       {isMainPage && hierarchy.renderType === RenderType.Table && (
         <Table
           heading={'Список произведений'}
-          className={'table__caption'}
           creations={getTableType(hierarchy.items)}
           pageCount={checkTableType(hierarchy)?.pages || 0}
         />

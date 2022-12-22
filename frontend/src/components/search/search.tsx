@@ -14,7 +14,6 @@ function Search() {
       <div className="search__container">
         <Table
           heading={'Результаты поиска'}
-          className={'title'}
           creations={items}
           pageCount={pages}
         />

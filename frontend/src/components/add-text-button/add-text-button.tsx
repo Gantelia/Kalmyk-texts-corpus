@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { showText } from '../../store/actions';
+import './add-text-button.scss';
 
 function AddTextButton() {
   const dispatch = useAppDispatch();

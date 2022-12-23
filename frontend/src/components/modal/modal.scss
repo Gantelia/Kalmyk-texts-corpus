@@ -4,20 +4,20 @@
   position: absolute;
   width: 350px;
   height: 250px;
-  background-color: #ffffff;
-  top: 50%;
+  background-color: $basic-color;
+  bottom: 300px;
   left: 50%;
-  transform: translate(-50%, -70%);
+  transform: translateX(-50%);
   padding: 40px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   font-size: 24px;
   line-height: 26px;
   font-family: 'PT Sans Caption', sans-serif;
   font-weight: 700;
-  justify-content: space-between;
-  align-items: center;
   color: $basic-dark;
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
 }

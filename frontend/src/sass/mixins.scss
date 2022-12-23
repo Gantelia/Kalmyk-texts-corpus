@@ -20,3 +20,10 @@
   color: #ac3e3e;
   left: 20px;
 }
+
+@mixin asterisk {
+  &::after {
+    content: ' *';
+    color: $error-color;
+  }
+}

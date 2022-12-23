@@ -1,0 +1,147 @@
+@import '../../sass/variables.scss';
+@import '../../sass/common/button.scss';
+
+.table {
+  margin-bottom: 32px;
+  font-size: 20px;
+  line-height: 26px;
+  color: #4e4e53;
+  background-color: $basic-color;
+  font-size: 20px;
+  line-height: 26px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+.table__empty {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.table__caption {
+  font-size: 24px;
+  line-height: 31px;
+  font-weight: 700;
+  color: $basic-dark;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.table__row {
+  &:nth-child(even) {
+    background-color: #c7d3e0;
+  }
+
+  &:nth-child(odd) {
+    background-color: $bg-light;
+  }
+}
+
+.table__row--head {
+  font-weight: 700;
+}
+
+.table__row--head .table__cell {
+  padding: 4px 9px 4px 12px;
+}
+
+.table__cell {
+  padding: 4px 8px 4px 13px;
+
+  &:first-child {
+    width: 300px;
+  }
+
+  &:nth-child(2) {
+    border-left: 1px solid #bbc7d4;
+    border-right: 1px solid #bbc7d4;
+  }
+
+  &:nth-child(3) {
+    width: 195px;
+  }
+}
+
+.table__row--head .table__cell {
+  &:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 12px;
+  }
+}
+
+.table__row:last-child .table__cell {
+  &:first-child {
+    border-bottom-left-radius: 12px;
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 12px;
+  }
+}
+
+.table__container {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+}
+
+.table__link {
+  background-color: inherit;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
+    color: #c16800;
+  }
+}
+
+// pagination
+
+.main .MuiPagination-root {
+  display: flex;
+}
+
+.main .MuiPagination-ul {
+  width: auto;
+  margin: 0 auto;
+}
+
+.main .MuiPaginationItem-root {
+  background-color: #ffffff;
+  color: #4e4e53;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+
+  &.Mui-selected {
+    background-color: $basic-dark;
+    color: #ffffff;
+    border: none;
+  }
+
+  &:hover {
+    background-color: #b0b0b0;
+  }
+
+  &:active {
+    background-color: #88888d;
+  }
+}

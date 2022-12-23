@@ -1,0 +1,54 @@
+@import '../../sass/variables.scss';
+@import '../../sass/common/label-placeholder.scss';
+@import '../../sass/mixins.scss';
+
+.add-text__grow-wrap {
+  position: relative;
+  grid-area: 3/1/4/-1;
+  display: grid;
+}
+
+.add-text__grow-wrap::before {
+  /* Считывает контент с <textarea> через родит. эл-т,
+   заставляя <textarea> растягиваться под высоту содержимого через общую grid */
+  content: attr(data-replicated-value) ' ';
+  white-space: pre-wrap;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.add-text__field,
+.add-text__grow-wrap::before {
+  @include field();
+  min-height: 350px;
+  grid-area: 1/1/-1/-1;
+}
+
+.add-text__field {
+  resize: none;
+  overflow: hidden;
+}
+
+.add-text__clear {
+  background-color: transparent;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background-image: url('../../images/clear-button.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 14px;
+  top: 12px;
+
+  &:hover {
+    opacity: 60%;
+  }
+
+  &:active {
+    opacity: 30%;
+  }
+}

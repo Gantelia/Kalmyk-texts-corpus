@@ -1,0 +1,24 @@
+@import '../../sass/mixins.scss';
+
+.add-text {
+  position: relative;
+}
+
+.add-text__container {
+  display: grid;
+  grid-template-columns: 655px auto;
+  column-gap: 25px;
+  row-gap: 16px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.add-text__text-label {
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-right: 25px;
+}
+
+.validation-error {
+  @include validation();
+}

@@ -1,0 +1,24 @@
+@import '../variables.scss';
+
+.button {
+  border: none;
+  padding: 17px 70px;
+  border-radius: 12px;
+  background-color: $basic-dark;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  font-family: 'PT Sans Caption', sans-serif;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    background-color: #4a688c;
+  }
+
+  &:active {
+    background-color: #26538c;
+  }
+}

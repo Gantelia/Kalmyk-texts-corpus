@@ -1,0 +1,24 @@
+.label-placeholder {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  background-color: transparent;
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  pointer-events: none;
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+textarea:focus + .label-placeholder,
+textarea:active + .label-placeholder,
+input:focus + .label-placeholder,
+input:active + .label-placeholder,
+.label-placeholder--offset {
+  font-size: 16px;
+  line-height: 20px;
+  transform: translateY(-20px);
+  max-width: 200px;
+}

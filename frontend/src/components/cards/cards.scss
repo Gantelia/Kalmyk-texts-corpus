@@ -1,0 +1,63 @@
+@import '../../sass/variables.scss';
+
+.cards {
+  margin: 33px auto 0;
+  padding: 0;
+  list-style-type: none;
+  width: 515px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.cards--wide {
+  width: 790px;
+}
+
+.cards__item {
+  margin: 12px;
+}
+
+.cards__button {
+  font-size: 20px;
+  line-height: 26px;
+  width: 230px;
+  min-height: 300px;
+  height: 100%;
+  border-radius: 12px;
+  border: none;
+  padding: 50px 16px 42px;
+  background-color: $bg-light;
+  color: #484848;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover {
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.card__title {
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.card__image {
+  margin-bottom: 28px;
+}
+
+.card__title {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}

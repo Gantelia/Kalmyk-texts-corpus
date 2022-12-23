@@ -1,0 +1,12 @@
+@import '../variables.scss';
+
+.title {
+  font-family: 'PT Mono', 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  text-align: left;
+  color: $basic-dark;
+  margin: 0;
+  margin-bottom: 32px;
+}

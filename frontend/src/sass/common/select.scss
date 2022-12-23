@@ -1,0 +1,38 @@
+@import '../../sass/variables.scss';
+
+.select {
+  background-color: $bg-light;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.select__input .MuiInputLabel-root {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  padding-left: 6px;
+}
+
+.select .MuiAutocomplete-endAdornment {
+  top: calc(50% - 18px);
+}
+
+.select .MuiInputBase-root {
+  border-radius: 12px;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+}
+
+.select__input .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #000000;
+}
+
+.select__input .MuiSvgIcon-root {
+  fill: #484848;
+}
+
+.select .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: none;
+}

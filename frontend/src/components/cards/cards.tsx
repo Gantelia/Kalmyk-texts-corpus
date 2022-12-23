@@ -19,7 +19,7 @@ function Cards({ cards }: CardsProps) {
           <button
             className="cards__button"
             type="button"
-            onClick={() => dispatch(fetchHierarchyAction(`/?g_id=${id}`))}
+            onClick={() => dispatch(fetchHierarchyAction(`?g_id=${id}`))}
           >
             <img
               className="card__image"

@@ -54,7 +54,7 @@ function Form() {
       );
       dispatch(
         fetchSearchResultAction(
-          `/?genres=${selectedIds.join(',')}&words=${inputRef.current.value}`
+          `?genres=${selectedIds.join(',')}&words=${inputRef.current.value}`
         )
       );
       setIsValid(true);
@@ -64,7 +64,7 @@ function Form() {
     if (selectValue && activeSelect === SelectType.Authors) {
       dispatch(
         fetchSearchResultAction(
-          `/?authors=${selectValue.join(',')}&words=${inputRef.current.value}`
+          `?authors=${selectValue.join(',')}&words=${inputRef.current.value}`
         )
       );
       setIsValid(true);

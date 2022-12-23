@@ -18,26 +18,23 @@ function Hierarchy() {
   const { hierarchy } = useAppSelector((state) => state);
 
   const isMainPage = usePathCheck();
+  const isCardList = isConditionMet(isMainPage, hierarchy, RenderType.Cards);
+  const isTable = isConditionMet(isMainPage, hierarchy, RenderType.Table);
+  const isTableEmpty = isTable && !hierarchy!.items.length;
 
   return (
     <section className="genre-structure">
       <h2 className="title">Иерархическая структура жанров</h2>
       <Breadcrumb />
-      {isConditionMet(isMainPage, hierarchy, RenderType.Cards) && (
-        <Cards cards={getCardsType(hierarchy?.items || [])} />
+      {isCardList && <Cards cards={getCardsType(hierarchy?.items || [])} />}
+      {isTable && !!hierarchy!.items.length && (
+        <Table
+          heading={'Список произведений'}
+          creations={getTableType(hierarchy!.items) || []}
+          pageCount={checkTableType(hierarchy!)?.pages || 0}
+        />
       )}
-      {isConditionMet(isMainPage, hierarchy, RenderType.Table) &&
-        Boolean(hierarchy!.items.length) && (
-          <Table
-            heading={'Список произведений'}
-            creations={getTableType(hierarchy!.items) || []}
-            pageCount={checkTableType(hierarchy!)?.pages || 0}
-          />
-        )}
-      {isConditionMet(isMainPage, hierarchy, RenderType.Table) &&
-        Boolean(hierarchy!.items.length) === false && (
-          <p className="table__empty">Ничего не найдено</p>
-        )}
+      {isTableEmpty && <p className="table__empty">Ничего не найдено</p>}
       {!isMainPage && <Text />}
       {!hierarchy && <Loader />}
     </section>

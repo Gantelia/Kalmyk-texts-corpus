@@ -29,7 +29,7 @@ export const fetchDocumentAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('document/fetchDocumentAction', async (id, { dispatch, extra: api }) => {
-  const { data } = await api.get(`${APIRoute.Document}/${id}`);
+  const { data } = await api.get(`${APIRoute.Document}${id}`);
   const adaptedData = adaptToClient(data.response);
   dispatch(getDocument(adaptedData));
 });

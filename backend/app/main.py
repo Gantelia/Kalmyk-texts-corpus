@@ -23,7 +23,7 @@ def read_root():
     return {"Hello": "Nomin Tech!"}
 
 
-@app.get("/menu")
+@app.get("/menu/")
 async def read_menu():
     return {"response": get_menu()}
 

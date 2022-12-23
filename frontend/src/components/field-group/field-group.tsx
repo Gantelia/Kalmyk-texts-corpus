@@ -15,9 +15,9 @@ function Input(
   const [value, setValue] = useState<string | number>('');
 
   return (
-    <p className="field-group">
+    <p className={`field-group field-group--${id}`}>
       <input
-        className="field field-group__input"
+        className="field"
         type={inputType}
         id={id}
         ref={ref}

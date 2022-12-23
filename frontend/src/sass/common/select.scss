@@ -1,4 +1,5 @@
 @import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
 
 .select {
   background-color: $bg-light;
@@ -23,6 +24,10 @@
   font-family: 'PT Sans Caption', sans-serif;
   font-size: 20px;
   line-height: 38px;
+}
+
+.select--required .MuiFormLabel-root {
+  @include asterisk();
 }
 
 .select__input .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {

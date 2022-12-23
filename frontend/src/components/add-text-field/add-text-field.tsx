@@ -34,7 +34,7 @@ function TextArea(_: any, ref: Ref<HTMLTextAreaElement>) {
         }`}
         htmlFor="loaded-text"
       >
-        Введите текст
+        Текст произведения
       </label>
       {input && (
         <button

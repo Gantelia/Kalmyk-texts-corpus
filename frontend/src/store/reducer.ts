@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { AUTHORS } from '../mocks/mocks';
 import { Genre } from '../types/genre';
 import { Document } from '../types/document';
 import { Hierarchy } from '../types/hierarchy';
@@ -30,8 +29,8 @@ const reducer = createReducer(initialState, (builder) => {
   builder.addCase(getGenres, (state, action) => {
     state.genres = action.payload;
   });
-  builder.addCase(getAuthors, (state) => {
-    state.authors = AUTHORS;
+  builder.addCase(getAuthors, (state, action) => {
+    state.authors = action.payload;
   });
   builder.addCase(getSearchResult, (state, action) => {
     state.searchResult = action.payload;

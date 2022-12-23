@@ -29,6 +29,10 @@
   overflow: hidden;
 }
 
+.add-text__field[required] + .label-placeholder {
+  @include asterisk;
+}
+
 .add-text__clear {
   background-color: transparent;
   padding: 0;

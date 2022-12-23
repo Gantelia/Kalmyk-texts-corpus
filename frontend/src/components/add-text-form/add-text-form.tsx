@@ -18,6 +18,7 @@ function AddTextForm() {
   const dispatch = useAppDispatch();
   const { addTextMessage } = useAppSelector((state) => state);
   const { genres } = useAppSelector((state) => state);
+  const titleRef = useRef<HTMLInputElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -43,13 +44,16 @@ function AddTextForm() {
       return;
     }
     const isConditionMet =
-      !!authorRef.current && !!yearRef.current && !!textRef.current;
+      !!authorRef.current &&
+      !!titleRef.current &&
+      !!yearRef.current &&
+      !!textRef.current;
     if (isConditionMet) {
       const text: UserText = {
         author: authorRef.current.value,
         genre: selectValue,
         /* eslint-disable */
-        text_title: 'ШЕДЕВР',
+        text_title: titleRef.current.value,
         pub_year: Number(yearRef.current.value),
         text_body: textRef.current.value
         /* eslint-enable */
@@ -62,21 +66,22 @@ function AddTextForm() {
 
   return (
     <form className="add-text" onSubmit={(evt) => handleSubmit(evt)}>
-      <div className="add-text__container">
-        {!isValid && (
-          <p className="validation-error">
-            Жанр - обязательное к заполнению поле
-          </p>
-        )}
-        <Select onChange={handleSelectChange} options={genres} />
-        <FieldGroup inputType="text" id="author" ref={authorRef}>
-          Введите автора
-        </FieldGroup>
-        <FieldGroup inputType="number" id="year" ref={yearRef}>
-          Введите год
-        </FieldGroup>
-        <AddTextField ref={textRef} />
-      </div>
+      {!isValid && (
+        <p className="validation-error">
+          Пожалуйста, заполните поля со звездочками
+        </p>
+      )}
+      <Select onChange={handleSelectChange} options={genres} />
+      <FieldGroup inputType="text" id="title" ref={titleRef} required>
+        Название
+      </FieldGroup>
+      <FieldGroup inputType="text" id="author" ref={authorRef}>
+        Автор
+      </FieldGroup>
+      <FieldGroup inputType="number" id="year" ref={yearRef}>
+        Год
+      </FieldGroup>
+      <AddTextField ref={textRef} />
       <AddTextButton />
       <button
         className="button add-text__submit"
@@ -85,6 +90,7 @@ function AddTextForm() {
       >
         Отправить
       </button>
+      <span className="add-text__asterisk">* - обязательные поля</span>
       {addTextMessage && (
         <Modal onClick={handleModalClick}>{addTextMessage}</Modal>
       )}

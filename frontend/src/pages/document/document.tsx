@@ -1,4 +1,4 @@
-import GenreStructure from '../../components/genre-structure/genre-structure';
+import Hierarchy from '../../components/hierarchy/hierarchy';
 import Search from '../../components/search/search';
 
 function Document() {
@@ -6,7 +6,7 @@ function Document() {
     <main className="main">
       <h1 className="visually-hidden">Документ</h1>
       <Search />
-      <GenreStructure />
+      <Hierarchy />
     </main>
   );
 }

@@ -17,10 +17,9 @@ import {
 const initialState = {
   genres: [] as Genre[],
   authors: [] as string[],
-  searchResult: {} as Table,
-  hierarchy: {} as Hierarchy,
+  searchResult: <Table | null>null,
+  hierarchy: <Hierarchy | null>null,
   breadcrumb: [] as Genre[],
-  isMessage: false,
   document: <null | Document>null,
   text: ''
 };
@@ -34,12 +33,10 @@ const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(getSearchResult, (state, action) => {
     state.searchResult = action.payload;
-    state.isMessage = true;
   });
   builder.addCase(getHierarchy, (state, action) => {
     state.hierarchy = action.payload;
     state.breadcrumb = action.payload.breadcrumb;
-    state.isMessage = state.breadcrumb.length === 1 ? false : true;
   });
   builder.addCase(getDocument, (state, action) => {
     state.document = action.payload.document;

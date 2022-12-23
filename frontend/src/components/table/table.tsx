@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
-
 import { TableItem } from '../../types/table';
 import { NO_PAGINATION_PAGE_COUNT } from '../../const';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
 import './table.scss';
 
@@ -18,20 +17,11 @@ function Table({ heading, creations, pageCount }: TableProps) {
   const [page, setPage] = useState(1);
 
   const dispatch = useAppDispatch();
-  const { isMessage } = useAppSelector((state) => state);
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
     dispatch(fetchHierarchyAction(`?/page=${value}`));
   };
-
-  if (isMessage && (!creations || !creations.length)) {
-    return <p className="table__empty">Ничего не найдено</p>;
-  }
-
-  if (!isMessage && (!creations || !creations.length)) {
-    return null;
-  }
 
   return (
     <>
@@ -54,7 +44,7 @@ function Table({ heading, creations, pageCount }: TableProps) {
           {creations?.map(({ id, title, author, year }) => (
             <tr className="table__row" key={id}>
               <td className="table__cell">
-                <div className="table__container">{author ? author : ''}</div>
+                <div className="table__container">{author ? author : '-'}</div>
               </td>
               <td className="table__cell">
                 <div className="table__container">
@@ -64,7 +54,7 @@ function Table({ heading, creations, pageCount }: TableProps) {
                 </div>
               </td>
               <td className="table__cell">
-                <div className="table__container">{year ? year : ''}</div>
+                <div className="table__container">{year ? year : '-'}</div>
               </td>
             </tr>
           ))}

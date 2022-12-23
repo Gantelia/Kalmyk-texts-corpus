@@ -5,18 +5,22 @@ import './search.scss';
 
 function Search() {
   const { searchResult } = useAppSelector((store) => store);
-  const { pages, items } = searchResult;
 
   return (
     <section className="search">
       <h2 className="title">Поиск</h2>
       <Form />
       <div className="search__container">
-        <Table
-          heading={'Результаты поиска'}
-          creations={items}
-          pageCount={pages}
-        />
+        {searchResult && !!searchResult.items.length && (
+          <Table
+            heading={'Результаты поиска'}
+            creations={searchResult.items}
+            pageCount={searchResult.pages}
+          />
+        )}
+        {searchResult && !searchResult.items.length && (
+          <p className="table__empty">Ничего не найдено</p>
+        )}
       </div>
     </section>
   );

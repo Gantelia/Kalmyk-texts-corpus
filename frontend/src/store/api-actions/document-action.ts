@@ -29,8 +29,6 @@ export const fetchDocumentAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('hierarchy/fetchDocumentAction', async (id, { dispatch, extra: api }) => {
-  console.log('fetch', id);
-
   const { data } = await api.get(`${APIRoute.Document}/${id}`);
   const adaptedData = adaptToClient(data.response);
   dispatch(getDocument(adaptedData));

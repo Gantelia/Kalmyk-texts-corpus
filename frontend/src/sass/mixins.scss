@@ -12,3 +12,11 @@
   color: #000000;
   background-color: $bg-light;
 }
+
+@mixin validation {
+  position: absolute;
+  top: -24px;
+  margin: 0;
+  color: #ac3e3e;
+  left: 20px;
+}

@@ -1,6 +1,5 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { AppRoute } from '../../const';
-
 import Logo from '../../images/kalmgu-logo.svg';
 import ScrollButton from '../scroll-button/scroll-button';
 import './layout.scss';

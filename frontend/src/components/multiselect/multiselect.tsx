@@ -1,6 +1,5 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
 import { Genre } from '../../types/genre';
 import { SelectType } from '../../const';
 import '../../sass/common/select.scss';

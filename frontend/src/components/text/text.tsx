@@ -14,7 +14,6 @@ function Text() {
   useEffect(() => {
     if (document === null || document?.id !== Number(id)) {
       dispatch(fetchDocumentAction(Number(id)));
-      console.log('dispatch');
     }
   }, [document, id]);
 

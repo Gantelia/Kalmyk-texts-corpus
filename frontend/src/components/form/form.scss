@@ -1,5 +1,6 @@
 @import '../../sass/variables';
 @import '../../sass/common/button.scss';
+@import '../../sass/mixins.scss';
 
 .form {
   display: grid;
@@ -10,11 +11,7 @@
 }
 
 .validation-error {
-  position: absolute;
-  top: -24px;
-  margin: 0;
-  color: #ac3e3e;
-  left: 20px;
+  @include validation();
 }
 
 .form__submit {

@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';
 import { AppDispatch, State } from '../../types/state';
-import { DocumentData } from '../../types/document';
+import { DocumentData, UserText } from '../../types/document';
 import { adaptBreadcrumb } from '../utils';
-import { getDocument } from '../actions';
+import { getDocument, getServerMessage } from '../actions';
 
 const adaptToClient = (documentData: any) => {
   const { breadcrumbs, document } = documentData;
@@ -28,8 +28,21 @@ export const fetchDocumentAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('hierarchy/fetchDocumentAction', async (id, { dispatch, extra: api }) => {
+>('document/fetchDocumentAction', async (id, { dispatch, extra: api }) => {
   const { data } = await api.get(`${APIRoute.Document}/${id}`);
   const adaptedData = adaptToClient(data.response);
   dispatch(getDocument(adaptedData));
+});
+
+export const loadTextAction = createAsyncThunk<
+  void,
+  UserText,
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('document/loadTextAction', async (text, { dispatch, extra: api }) => {
+  const { data } = await api.post(APIRoute.AddText, text);
+  dispatch(getServerMessage(data.message));
 });

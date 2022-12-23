@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchDocumentAction } from '../../store/api-actions/document-action';
+import { fetchDocumentAction } from '../../store/api-actions/document-actions';
 import Loader from '../loader/loader';
 import './text.scss';
 

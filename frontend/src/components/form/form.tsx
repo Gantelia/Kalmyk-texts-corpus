@@ -1,10 +1,10 @@
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { SelectType } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
-
+import FieldGroup from '../../components/field-group/field-group';
 import { Genre } from '../../types/genre';
-import { Input } from '../field-group/field-group';
+import Loader from '../loader/loader';
 import Multiselect from '../multiselect/multiselect';
 import './form.scss';
 
@@ -16,9 +16,22 @@ function Form() {
   const [selectValue, setSelectValue] = useState<string[] | Genre[] | null>(
     null
   );
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   const dispatch = useAppDispatch();
-  const { genres, authors } = useAppSelector((state) => state);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { genres, authors, searchResult } = useAppSelector((state) => state);
+
+  useEffect(() => {
+    if (isLoading && genres && authors) {
+      setIsLoading(false);
+      return;
+    }
+    if (isLoading && searchResult) {
+      setIsLoading(false);
+      return;
+    }
+  }, [isLoading, genres, authors, searchResult]);
 
   const onSelectChange = (value: string[] | Genre[] | null, id: SelectType) => {
     const activeDropdown = value?.length ? id : SelectType.Default;
@@ -45,6 +58,7 @@ function Form() {
         )
       );
       setIsValid(true);
+      setIsLoading(true);
       return;
     }
     if (selectValue && activeSelect === SelectType.Authors) {
@@ -54,37 +68,41 @@ function Form() {
         )
       );
       setIsValid(true);
+      setIsLoading(true);
     }
   };
 
   return (
-    <form className="form" onSubmit={(evt) => handleSubmit(evt)}>
-      {!isValid && (
-        <p className="validation-error">
-          Пожалуйста, выберите жанры или авторов
-        </p>
-      )}
-      <Multiselect
-        options={genres}
-        label={'Выберите жанр'}
-        id={SelectType.Genres}
-        onChange={onSelectChange}
-        activeSelect={activeSelect}
-      />
-      <Multiselect
-        options={authors}
-        label={'Выберите автора'}
-        id={SelectType.Authors}
-        onChange={onSelectChange}
-        activeSelect={activeSelect}
-      />
-      <Input inputType="text" id="text" required={true} ref={inputRef}>
-        Введите текст
-      </Input>
-      <button className="button form__submit" type="submit">
-        Искать
-      </button>
-    </form>
+    <div className="form__container">
+      <form className="form" onSubmit={(evt) => handleSubmit(evt)}>
+        {!isValid && (
+          <p className="validation-error">
+            Пожалуйста, выберите жанры или авторов
+          </p>
+        )}
+        <Multiselect
+          options={genres}
+          label={'Выберите жанр'}
+          id={SelectType.Genres}
+          onChange={onSelectChange}
+          activeSelect={activeSelect}
+        />
+        <Multiselect
+          options={authors}
+          label={'Выберите автора'}
+          id={SelectType.Authors}
+          onChange={onSelectChange}
+          activeSelect={activeSelect}
+        />
+        <FieldGroup inputType="text" id="text" required={true} ref={inputRef}>
+          Введите текст
+        </FieldGroup>
+        <button className="button form__submit" type="submit">
+          Искать
+        </button>
+      </form>
+      {isLoading && <Loader />}
+    </div>
   );
 }
 

@@ -25,5 +25,6 @@ export enum APIRoute {
   SearchMenu = '/menu',
   Search = '/search',
   Hierarchy = '/data',
-  Document = '/document'
+  Document = '/document',
+  AddText = '/add_text'
 }

@@ -6,12 +6,13 @@ import { Hierarchy } from '../types/hierarchy';
 import { Table } from '../types/table';
 
 import {
-  addText,
+  showText,
   getAuthors,
   getDocument,
   getGenres,
   getHierarchy,
-  getSearchResult
+  getSearchResult,
+  getServerMessage
 } from './actions';
 
 const initialState = {
@@ -21,7 +22,8 @@ const initialState = {
   hierarchy: <Hierarchy | null>null,
   breadcrumb: [] as Genre[],
   document: <null | Document>null,
-  text: ''
+  text: '',
+  addTextMessage: ''
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -42,8 +44,11 @@ const reducer = createReducer(initialState, (builder) => {
     state.document = action.payload.document;
     state.breadcrumb = action.payload.breadcrumb;
   });
-  builder.addCase(addText, (state, action) => {
+  builder.addCase(showText, (state, action) => {
     state.text = action.payload;
+  });
+  builder.addCase(getServerMessage, (state, action) => {
+    state.addTextMessage = action.payload;
   });
 });
 

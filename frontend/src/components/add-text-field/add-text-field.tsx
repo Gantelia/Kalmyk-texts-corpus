@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { forwardRef, Ref, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { addText } from '../../store/actions';
-
+import { showText } from '../../store/actions';
 import './add-text-field.scss';
 
-function AddTextField() {
+function TextArea(_: any, ref: Ref<HTMLTextAreaElement>) {
   const [input, setInput] = useState('');
 
   const dispatch = useAppDispatch();
@@ -16,14 +15,15 @@ function AddTextField() {
     setInput(text);
   }, [text]);
 
-  // <div> растягивает <textarea> на высоту содержимого
   return (
+    // <div> растягивает <textarea> на высоту содержимого
     <div className="add-text__grow-wrap" data-replicated-value={input}>
       <textarea
         className="add-text__field"
         onChange={({ target }) => setInput(target.value)}
-        onBlur={({ target }) => dispatch(addText(target.value))}
+        onBlur={({ target }) => dispatch(showText(target.value))}
         value={input}
+        ref={ref}
         required
       />
       <label
@@ -40,7 +40,7 @@ function AddTextField() {
         <button
           className="add-text__clear"
           type="button"
-          onClick={() => dispatch(addText(''))}
+          onClick={() => dispatch(showText(''))}
         >
           <span className="visually-hidden">Очистить</span>
         </button>
@@ -48,5 +48,7 @@ function AddTextField() {
     </div>
   );
 }
+
+const AddTextField = forwardRef(TextArea);
 
 export default AddTextField;

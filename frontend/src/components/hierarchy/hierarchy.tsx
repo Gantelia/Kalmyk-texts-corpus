@@ -26,13 +26,18 @@ function Hierarchy() {
       {isConditionMet(isMainPage, hierarchy, RenderType.Cards) && (
         <Cards cards={getCardsType(hierarchy?.items || [])} />
       )}
-      {isConditionMet(isMainPage, hierarchy, RenderType.Table) && (
-        <Table
-          heading={'Список произведений'}
-          creations={getTableType(hierarchy!.items) || []}
-          pageCount={checkTableType(hierarchy!)?.pages || 0}
-        />
-      )}
+      {isConditionMet(isMainPage, hierarchy, RenderType.Table) &&
+        Boolean(hierarchy!.items.length) && (
+          <Table
+            heading={'Список произведений'}
+            creations={getTableType(hierarchy!.items) || []}
+            pageCount={checkTableType(hierarchy!)?.pages || 0}
+          />
+        )}
+      {isConditionMet(isMainPage, hierarchy, RenderType.Table) &&
+        Boolean(hierarchy!.items.length) === false && (
+          <p className="table__empty">Ничего не найдено</p>
+        )}
       {!isMainPage && <Text />}
       {!hierarchy && <Loader />}
     </section>

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import { useAppDispatch } from '../../hooks';
-import { addText } from '../../store/actions';
+import { showText } from '../../store/actions';
 
 function AddTextButton() {
   const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ function AddTextButton() {
     reader.onload = async (evt) => {
       if (typeof evt.target?.result === 'string') {
         const text = evt.target?.result as string;
-        dispatch(addText(text));
+        dispatch(showText(text));
       }
     };
   };

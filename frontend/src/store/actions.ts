@@ -16,4 +16,6 @@ export const getHierarchy = createAction<Hierarchy>(
 
 export const getDocument = createAction<DocumentData>('document/getDocument');
 
-export const addText = createAction<string>('document/addText');
+export const showText = createAction<string>('document/showText');
+
+export const getServerMessage = createAction<string>('document/addText');

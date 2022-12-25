@@ -19,3 +19,5 @@ export const getDocument = createAction<DocumentData>('document/getDocument');
 export const showText = createAction<string>('document/showText');
 
 export const getServerMessage = createAction<string>('document/addText');
+
+export const setError = createAction<string>('error/setError');

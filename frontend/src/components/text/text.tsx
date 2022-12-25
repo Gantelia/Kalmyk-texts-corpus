@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchDocument } from '../../store/api-actions/document-actions';
+import { fetchDocumentAction } from '../../store/api-actions/document-actions';
 import Loader from '../loader/loader';
 import './text.scss';
 
@@ -13,7 +13,7 @@ function Text() {
 
   useEffect(() => {
     if (document === null || document?.id !== Number(id)) {
-      dispatch(fetchDocument(Number(id)));
+      dispatch(fetchDocumentAction(Number(id)));
     }
   }, [document, id]);
 

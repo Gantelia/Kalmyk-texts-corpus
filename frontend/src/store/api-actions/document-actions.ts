@@ -5,6 +5,7 @@ import { AppDispatch, State } from '../../types/state';
 import { DocumentData, UserText } from '../../types/document';
 import { adaptBreadcrumb } from '../utils';
 import { getDocument, getServerMessage } from '../actions';
+import { errorHandle } from '../../services/error-handle';
 
 const adaptToClient = (documentData: any) => {
   const { breadcrumbs, document } = documentData;
@@ -20,7 +21,7 @@ const adaptToClient = (documentData: any) => {
   } as DocumentData;
 };
 
-export const fetchDocument = createAsyncThunk<
+export const fetchDocumentAction = createAsyncThunk<
   void,
   number,
   {
@@ -29,12 +30,16 @@ export const fetchDocument = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('document/fetchDocument', async (id, { dispatch, extra: api }) => {
-  const { data } = await api.get(`${APIRoute.Document}${id}`);
-  const adaptedData = adaptToClient(data.response);
-  dispatch(getDocument(adaptedData));
+  try {
+    const { data } = await api.get(`${APIRoute.Document}${id}`);
+    const adaptedData = adaptToClient(data.response);
+    dispatch(getDocument(adaptedData));
+  } catch (error) {
+    errorHandle(error);
+  }
 });
 
-export const loadText = createAsyncThunk<
+export const loadTextAction = createAsyncThunk<
   void,
   UserText,
   {
@@ -43,6 +48,10 @@ export const loadText = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('document/loadText', async (text, { dispatch, extra: api }) => {
-  const { data } = await api.post(APIRoute.AddText, text);
-  dispatch(getServerMessage(data.message));
+  try {
+    const { data } = await api.post(APIRoute.AddText, text);
+    dispatch(getServerMessage(data.message));
+  } catch (error) {
+    errorHandle(error);
+  }
 });

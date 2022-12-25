@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { api, store } from '..';
 import { APIRoute } from '../../const';
+import { errorHandle } from '../../services/error-handle';
 import { Genre, SearchMenu } from '../../types/genre';
 import { AppDispatch, State } from '../../types/state';
 import { Table } from '../../types/table';
@@ -17,13 +18,17 @@ const adaptMenuToClient = (
   };
 };
 
-export const fetchSearchMenu = createAsyncThunk(
+export const fetchSearchMenuAction = createAsyncThunk(
   'search/fetchSearchMenu',
   async () => {
-    const { data } = await api.get<SearchMenu>(APIRoute.SearchMenu);
-    const adaptedMenu = adaptMenuToClient(data);
-    store.dispatch(getGenres(adaptedMenu.genres));
-    store.dispatch(getAuthors(adaptedMenu.authors));
+    try {
+      const { data } = await api.get<SearchMenu>(APIRoute.SearchMenu);
+      const adaptedMenu = adaptMenuToClient(data);
+      store.dispatch(getGenres(adaptedMenu.genres));
+      store.dispatch(getAuthors(adaptedMenu.authors));
+    } catch (error) {
+      errorHandle(error);
+    }
   }
 );
 
@@ -43,7 +48,7 @@ const adaptResultToClient = (result: any): Table => {
   };
 };
 
-export const fetchSearchResult = createAsyncThunk<
+export const fetchSearchResultAction = createAsyncThunk<
   void,
   string,
   {
@@ -52,7 +57,11 @@ export const fetchSearchResult = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('search/fetchSearchResult', async (parameter) => {
-  const { data } = await api.get(`${APIRoute.Search}${parameter}`);
-  const adaptedData = adaptResultToClient(data.response);
-  store.dispatch(getSearchResult(adaptedData));
+  try {
+    const { data } = await api.get(`${APIRoute.Search}${parameter}`);
+    const adaptedData = adaptResultToClient(data.response);
+    store.dispatch(getSearchResult(adaptedData));
+  } catch (error) {
+    errorHandle(error);
+  }
 });

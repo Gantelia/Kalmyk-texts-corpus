@@ -11,7 +11,8 @@ import {
   getGenres,
   getHierarchy,
   getSearchResult,
-  getServerMessage
+  getServerMessage,
+  setError
 } from './actions';
 
 type InitialState = {
@@ -61,6 +62,9 @@ const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(getServerMessage, (state, action) => {
     state.addTextMessage = action.payload;
+  });
+  builder.addCase(setError, (state, action) => {
+    state.error = action.payload;
   });
 });
 

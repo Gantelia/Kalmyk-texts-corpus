@@ -6,11 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import App from './components/app/App';
 import './index.scss';
-import { fetchSearchMenu } from './store/api-actions/search-actions';
-import { fetchHierarchy } from './store/api-actions/hierarchy-actions';
+import { fetchSearchMenuAction } from './store/api-actions/search-actions';
+import { fetchHierarchyAction } from './store/api-actions/hierarchy-actions';
+import ErrorMessage from './components/error-message/error-message';
 
-store.dispatch(fetchSearchMenu());
-store.dispatch(fetchHierarchy(''));
+store.dispatch(fetchSearchMenuAction());
+store.dispatch(fetchHierarchyAction(''));
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -18,6 +19,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorMessage />
       <App />
     </Provider>
   </React.StrictMode>

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';
+import { errorHandle } from '../../services/error-handle';
 import { ServerCard } from '../../types/cards';
 import { Hierarchy } from '../../types/hierarchy';
 import { AppDispatch, State } from '../../types/state';
@@ -34,7 +35,7 @@ const adaptToClient = (hierarchy: any): Hierarchy => {
   };
 };
 
-export const fetchHierarchy = createAsyncThunk<
+export const fetchHierarchyAction = createAsyncThunk<
   void,
   string,
   {
@@ -43,6 +44,10 @@ export const fetchHierarchy = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('hierarchy/fetchHierarchy', async (parameter, { dispatch, extra: api }) => {
-  const { data } = await api.get(`${APIRoute.Hierarchy}${parameter}`);
-  dispatch(getHierarchy(adaptToClient(data.response)));
+  try {
+    const { data } = await api.get(`${APIRoute.Hierarchy}${parameter}`);
+    dispatch(getHierarchy(adaptToClient(data.response)));
+  } catch (error) {
+    errorHandle(error);
+  }
 });

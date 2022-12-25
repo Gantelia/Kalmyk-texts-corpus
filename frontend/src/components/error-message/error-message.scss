@@ -1,0 +1,21 @@
+@import '../../sass/variables.scss';
+
+.error {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 15px;
+  background-color: $error-color;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 24px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.error__label {
+  font-weight: 400;
+  margin-bottom: 10px;
+  display: block;
+}

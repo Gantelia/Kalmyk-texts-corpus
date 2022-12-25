@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { SelectType } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchSearchResult } from '../../store/api-actions/search-actions';
+import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
 import FieldGroup from '../../components/field-group/field-group';
 import { Genre } from '../../types/genre';
 import Loader from '../loader/loader';
@@ -53,7 +53,7 @@ function Form() {
         (item) => genres.find((genre) => genre.genre === item)?.id
       );
       dispatch(
-        fetchSearchResult(
+        fetchSearchResultAction(
           `?genres=${selectedIds.join(',')}&words=${inputRef.current.value}`
         )
       );
@@ -63,7 +63,7 @@ function Form() {
     }
     if (selectValue && activeSelect === SelectType.Authors) {
       dispatch(
-        fetchSearchResult(
+        fetchSearchResultAction(
           `?authors=${selectValue.join(',')}&words=${inputRef.current.value}`
         )
       );

@@ -6,11 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './store';
 import App from './components/app/App';
 import './index.scss';
-import { fetchSearchMenuAction } from './store/api-actions/search-actions';
-import { fetchHierarchyAction } from './store/api-actions/hierarchy-actions';
+import { fetchSearchMenu } from './store/api-actions/search-actions';
+import { fetchHierarchy } from './store/api-actions/hierarchy-actions';
 
-store.dispatch(fetchSearchMenuAction());
-store.dispatch(fetchHierarchyAction(''));
+store.dispatch(fetchSearchMenu());
+store.dispatch(fetchHierarchy(''));
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

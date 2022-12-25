@@ -6,7 +6,7 @@ import Select from '../select/select';
 import AddTextField from '../add-text-field/add-text-field';
 import './add-text-form.scss';
 import { UserText } from '../../types/document';
-import { loadTextAction } from '../../store/api-actions/document-actions';
+import { loadText } from '../../store/api-actions/document-actions';
 import { getServerMessage } from '../../store/actions';
 import Modal from '../modal/modal';
 
@@ -58,7 +58,7 @@ function AddTextForm() {
         text_body: textRef.current.value
         /* eslint-enable */
       };
-      dispatch(loadTextAction(text));
+      dispatch(loadText(text));
       setIsValid(true);
       setIsLoading(true);
     }

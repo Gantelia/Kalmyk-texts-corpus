@@ -17,8 +17,8 @@ const adaptMenuToClient = (
   };
 };
 
-export const fetchSearchMenuAction = createAsyncThunk(
-  'search/fetchSearchMenuAction',
+export const fetchSearchMenu = createAsyncThunk(
+  'search/fetchSearchMenu',
   async () => {
     const { data } = await api.get<SearchMenu>(APIRoute.SearchMenu);
     const adaptedMenu = adaptMenuToClient(data);
@@ -32,18 +32,18 @@ const adaptResultToClient = (result: any): Table => {
   return {
     renderType: RenderType,
     pages: pages,
-    items: !table.length
-      ? []
-      : table.map((item: any) => ({
+    items: table.length
+      ? table.map((item: any) => ({
           id: item.text_id,
           author: item.author,
           title: item.text_title,
           year: item.pub_year
         }))
+      : []
   };
 };
 
-export const fetchSearchResultAction = createAsyncThunk<
+export const fetchSearchResult = createAsyncThunk<
   void,
   string,
   {
@@ -51,7 +51,7 @@ export const fetchSearchResultAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('search/fetchSearchResultAction', async (parameter) => {
+>('search/fetchSearchResult', async (parameter) => {
   const { data } = await api.get(`${APIRoute.Search}${parameter}`);
   const adaptedData = adaptResultToClient(data.response);
   store.dispatch(getSearchResult(adaptedData));

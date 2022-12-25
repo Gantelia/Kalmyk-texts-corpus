@@ -4,7 +4,7 @@ import Pagination from '@mui/material/Pagination';
 import { TableItem } from '../../types/table';
 import { NO_PAGINATION_PAGE_COUNT } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchy } from '../../store/api-actions/hierarchy-actions';
 import './table.scss';
 
 type TableProps = {
@@ -20,7 +20,7 @@ function Table({ heading, creations, pageCount }: TableProps) {
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
-    dispatch(fetchHierarchyAction(`?/page=${value}`));
+    dispatch(fetchHierarchy(`?/page=${value}`));
   };
 
   return (

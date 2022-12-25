@@ -20,7 +20,7 @@ const adaptToClient = (documentData: any) => {
   } as DocumentData;
 };
 
-export const fetchDocumentAction = createAsyncThunk<
+export const fetchDocument = createAsyncThunk<
   void,
   number,
   {
@@ -28,13 +28,13 @@ export const fetchDocumentAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('document/fetchDocumentAction', async (id, { dispatch, extra: api }) => {
+>('document/fetchDocument', async (id, { dispatch, extra: api }) => {
   const { data } = await api.get(`${APIRoute.Document}${id}`);
   const adaptedData = adaptToClient(data.response);
   dispatch(getDocument(adaptedData));
 });
 
-export const loadTextAction = createAsyncThunk<
+export const loadText = createAsyncThunk<
   void,
   UserText,
   {
@@ -42,7 +42,7 @@ export const loadTextAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('document/loadTextAction', async (text, { dispatch, extra: api }) => {
+>('document/loadText', async (text, { dispatch, extra: api }) => {
   const { data } = await api.post(APIRoute.AddText, text);
   dispatch(getServerMessage(data.message));
 });

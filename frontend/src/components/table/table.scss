@@ -26,7 +26,7 @@
   font-size: 24px;
   line-height: 31px;
   font-weight: 700;
-  color: $basic-dark;
+  color: $basic-dark-color;
   margin-bottom: 32px;
   text-align: left;
 }
@@ -37,7 +37,7 @@
   }
 
   &:nth-child(odd) {
-    background-color: $bg-light;
+    background-color: $bg-light-color;
   }
 }
 
@@ -132,7 +132,7 @@
   margin: 5px;
 
   &.Mui-selected {
-    background-color: $basic-dark;
+    background-color: $basic-dark-color;
     color: #ffffff;
     border: none;
   }

@@ -18,7 +18,7 @@
 }
 
 .header::before {
-  background-color: $basic-dark;
+  background-color: $basic-dark-color;
   content: '';
   width: 200%;
   height: 510%;
@@ -64,7 +64,7 @@
 }
 
 .footer {
-  background-color: $basic-dark;
+  background-color: $basic-dark-color;
   padding: 40px 44px 36px;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .navigation__link {
-  color: white;
+  color: #ffffff;
   font-size: 24px;
   line-height: 31px;
 

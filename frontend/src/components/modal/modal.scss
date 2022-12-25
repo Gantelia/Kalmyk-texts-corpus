@@ -1,13 +1,21 @@
 @import '../../sass/variables.scss';
 
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .modal {
-  position: absolute;
   width: 350px;
   height: 250px;
   background-color: $basic-color;
-  bottom: 300px;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 40px;
   border-radius: 12px;
   display: flex;
@@ -18,16 +26,13 @@
   line-height: 26px;
   font-family: 'PT Sans Caption', sans-serif;
   font-weight: 700;
-  color: $basic-dark;
+  color: $basic-dark-color;
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.25);
 }
 
 .modal__message {
   margin: 0;
   margin-top: 20px;
-}
-
-.modal__button {
 }
 
 .modal__acception {

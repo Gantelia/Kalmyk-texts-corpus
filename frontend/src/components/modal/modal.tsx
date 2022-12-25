@@ -8,12 +8,18 @@ type ModalProps = {
 
 function Modal({ children, onClick }: ModalProps) {
   return (
-    <section className="modal">
-      <p className="modal__message">{children}</p>
-      <button className="modal__button button" type="button" onClick={onClick}>
-        <span className="modal__acception">Ок</span>
-      </button>
-    </section>
+    <div className="modal-container">
+      <section className="modal">
+        <p className="modal__message">{children}</p>
+        <button
+          className="modal__button button"
+          type="button"
+          onClick={onClick}
+        >
+          <span className="modal__acception">Ок</span>
+        </button>
+      </section>
+    </div>
   );
 }
 

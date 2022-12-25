@@ -14,15 +14,28 @@ import {
   getServerMessage
 } from './actions';
 
-const initialState = {
-  genres: [] as Genre[],
-  authors: [] as string[],
-  searchResult: <Table | null>null,
-  hierarchy: <Hierarchy | null>null,
-  breadcrumb: [] as Genre[],
-  document: <null | Document>null,
+type InitialState = {
+  genres: Genre[];
+  authors: string[];
+  searchResult: Table | null;
+  hierarchy: Hierarchy | null;
+  breadcrumb: Genre[];
+  document: Document | null;
+  text: string;
+  addTextMessage: string;
+  error: string;
+};
+
+const initialState: InitialState = {
+  genres: [],
+  authors: [],
+  searchResult: null,
+  hierarchy: null,
+  breadcrumb: [],
+  document: null,
   text: '',
-  addTextMessage: ''
+  addTextMessage: '',
+  error: ''
 };
 
 const reducer = createReducer(initialState, (builder) => {

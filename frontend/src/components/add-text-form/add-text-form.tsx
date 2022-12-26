@@ -19,6 +19,7 @@ function AddTextForm() {
   const dispatch = useAppDispatch();
   const { addTextMessage } = useAppSelector((state) => state);
   const { genres } = useAppSelector((state) => state);
+
   const titleRef = useRef<HTMLInputElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
   const yearRef = useRef<HTMLInputElement>(null);
@@ -50,13 +51,14 @@ function AddTextForm() {
       !!yearRef.current &&
       !!textRef.current;
     if (isConditionMet) {
+      const value = genres.find((item) => item.genre === selectValue);
       const text: UserText = {
         author: authorRef.current.value,
-        genre: selectValue,
+        genre: String(value!.id),
         /* eslint-disable */
         text_title: titleRef.current.value,
         pub_year: Number(yearRef.current.value),
-        text_body: textRef.current.value
+        text_body: ''
         /* eslint-enable */
       };
       dispatch(loadTextAction(text));

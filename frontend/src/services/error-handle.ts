@@ -6,14 +6,15 @@ import { clearErrorAction } from '../store/api-actions/error-actions';
 import { HTTP_CODE } from '../const';
 
 export const errorHandle = (error: ErrorType): void => {
-  if (!request.isAxiosError(error)) {
-    throw error;
-  }
-
   const handleError = (message: string) => {
     store.dispatch(setError(message));
     store.dispatch(clearErrorAction());
   };
+
+  if (!request.isAxiosError(error)) {
+    handleError('Что-то пошло не так...');
+    throw error;
+  }
 
   const { response } = error;
 

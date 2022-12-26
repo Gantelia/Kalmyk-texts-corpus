@@ -19,12 +19,13 @@ function Multiselect({
   activeSelect = SelectType.Default,
   onChange
 }: MultiselectProps) {
+  const isActive = id === activeSelect;
+  const isNoneChosen = activeSelect === SelectType.Default;
+
   return (
     <Autocomplete
-      className="select"
-      disabled={
-        activeSelect === SelectType.Default ? false : id !== activeSelect
-      }
+      className={`select ${isActive || isNoneChosen ? 'select--required' : ''}`}
+      disabled={!isActive && !isNoneChosen}
       onChange={(event: any, newValue: string[] | null) => {
         onChange(newValue, id);
       }}

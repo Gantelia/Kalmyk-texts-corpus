@@ -9,6 +9,7 @@ import { UserText } from '../../types/document';
 import { loadTextAction } from '../../store/api-actions/document-actions';
 import { getServerMessage } from '../../store/actions';
 import Modal from '../modal/modal';
+import Asterisk from '../asterisk/asterisk';
 
 function AddTextForm() {
   const [selectValue, setSelectValue] = useState<string | null>(null);
@@ -90,7 +91,7 @@ function AddTextForm() {
       >
         Отправить
       </button>
-      <span className="add-text__asterisk">* - обязательные поля</span>
+      <Asterisk className="add-text__asterisk" />
       {addTextMessage && (
         <Modal onClick={handleModalClick}>{addTextMessage}</Modal>
       )}

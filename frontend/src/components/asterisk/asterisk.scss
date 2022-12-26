@@ -1,0 +1,17 @@
+@import '../../sass/variables.scss';
+
+.asterisk {
+  color: $error-color;
+}
+
+.add-text__asterisk {
+  grid-area: 4/3/5/-1;
+  align-self: center;
+  justify-self: end;
+}
+
+.form__asterisk {
+  position: absolute;
+  bottom: -40px;
+  right: 4px;
+}

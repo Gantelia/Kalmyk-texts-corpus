@@ -7,6 +7,7 @@ import { Genre } from '../../types/genre';
 import Loader from '../loader/loader';
 import Multiselect from '../multiselect/multiselect';
 import './form.scss';
+import Asterisk from '../asterisk/asterisk';
 
 function Form() {
   // Одновременно можно искать только в одном выпадающем списке.
@@ -100,6 +101,7 @@ function Form() {
         <button className="button form__submit" type="submit">
           Искать
         </button>
+        <Asterisk className="form__asterisk" />
       </form>
       {isLoading && <Loader />}
     </div>

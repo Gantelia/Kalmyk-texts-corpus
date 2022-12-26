@@ -13,7 +13,7 @@ function Cards({ cards }: CardsProps) {
   const isWide = cards.length > NARROW_LIST_CARD_COUNT;
 
   return (
-    <ul className={`cards ${isWide && 'cards--wide'}`}>
+    <ul className={`cards ${isWide ? 'cards--wide' : ''}`}>
       {cards.map(({ id, title, picture }) => (
         <li className="cards__item" key={id}>
           <button

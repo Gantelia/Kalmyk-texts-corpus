@@ -25,7 +25,9 @@ function Input(
         onChange={({ target }) => setValue(target.value)}
       />
       <label
-        className={`label-placeholder ${value && 'label-placeholder--offset'}`}
+        className={`label-placeholder ${
+          value ? 'label-placeholder--offset' : ''
+        }`}
         htmlFor={id}
       >
         {children}

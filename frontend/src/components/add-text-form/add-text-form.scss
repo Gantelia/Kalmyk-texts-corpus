@@ -14,10 +14,3 @@
 .validation-error {
   @include validation();
 }
-
-.add-text__asterisk {
-  grid-area: 4/3/5/-1;
-  color: $error-color;
-  align-self: center;
-  justify-self: end;
-}

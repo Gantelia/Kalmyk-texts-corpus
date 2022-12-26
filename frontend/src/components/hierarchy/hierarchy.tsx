@@ -23,7 +23,7 @@ function Hierarchy() {
   const isTableEmpty = isTable && !hierarchy!.items.length;
 
   return (
-    <section className="genre-structure">
+    <section className="hierarchy">
       <h2 className="title">Иерархическая структура жанров</h2>
       <Breadcrumb />
       {isCardList && <Cards cards={getCardsType(hierarchy?.items || [])} />}

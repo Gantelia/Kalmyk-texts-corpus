@@ -50,6 +50,7 @@ function AddTextForm() {
       !!titleRef.current &&
       !!yearRef.current &&
       !!textRef.current;
+
     if (isConditionMet) {
       const value = genres.find((item) => item.genre === selectValue);
       const text: UserText = {

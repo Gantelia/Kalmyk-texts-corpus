@@ -45,21 +45,21 @@ function AddTextForm() {
       setIsValid(false);
       return;
     }
-    const isConditionMet =
-      !!authorRef.current &&
-      !!titleRef.current &&
-      !!yearRef.current &&
-      !!textRef.current;
 
-    if (isConditionMet) {
+    const author = authorRef.current;
+    const title = titleRef.current;
+    const year = yearRef.current;
+    const file = textRef.current;
+
+    if (author && title && year && file) {
       const value = genres.find((item) => item.genre === selectValue);
       const text: UserText = {
-        author: authorRef.current.value,
+        author: author.value,
         genre: String(value!.id),
         /* eslint-disable */
-        text_title: titleRef.current.value,
-        pub_year: Number(yearRef.current.value),
-        text_body: ''
+        text_title: title.value,
+        pub_year: Number(year.value),
+        text_body: file.value
         /* eslint-enable */
       };
       dispatch(loadTextAction(text));
@@ -96,7 +96,9 @@ function AddTextForm() {
       </button>
       <Asterisk className="add-text__asterisk" />
       {addTextMessage && (
-        <Modal onClick={handleModalClick}>{addTextMessage}</Modal>
+        <Modal onClick={handleModalClick}>
+          {addTextMessage || 'Не удалось добавить документ'}
+        </Modal>
       )}
     </form>
   );

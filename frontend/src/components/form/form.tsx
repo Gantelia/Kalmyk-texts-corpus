@@ -8,6 +8,7 @@ import Loader from '../loader/loader';
 import Multiselect from '../multiselect/multiselect';
 import './form.scss';
 import Asterisk from '../asterisk/asterisk';
+import { getSearchResult } from '../../store/actions';
 
 function Form() {
   // Одновременно можно искать только в одном выпадающем списке.
@@ -17,17 +18,13 @@ function Form() {
   const [selectValue, setSelectValue] = useState<string[] | Genre[] | null>(
     null
   );
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
   const { genres, authors, searchResult } = useAppSelector((state) => state);
 
   useEffect(() => {
-    if (isLoading && genres && authors) {
-      setIsLoading(false);
-      return;
-    }
     if (isLoading && searchResult) {
       setIsLoading(false);
       return;
@@ -63,15 +60,20 @@ function Form() {
       return;
     }
     if (selectValue && activeSelect === SelectType.Authors) {
+      dispatch(getSearchResult(null));
       dispatch(
         fetchSearchResultAction(
           `?authors=${selectValue.join(',')}&words=${inputRef.current.value}`
         )
       );
-      setIsValid(true);
-      setIsLoading(true);
     }
+    setIsValid(true);
+    setIsLoading(true);
   };
+
+  if (!genres || !authors) {
+    return <Loader />;
+  }
 
   return (
     <div className="form__container">
@@ -87,6 +89,7 @@ function Form() {
           id={SelectType.Genres}
           onChange={onSelectChange}
           activeSelect={activeSelect}
+          isDisabled={isLoading}
         />
         <Multiselect
           options={authors}
@@ -94,11 +97,22 @@ function Form() {
           id={SelectType.Authors}
           onChange={onSelectChange}
           activeSelect={activeSelect}
+          isDisabled={isLoading}
         />
-        <FieldGroup inputType="text" id="text" required={true} ref={inputRef}>
+        <FieldGroup
+          inputType="text"
+          id="text"
+          required={true}
+          ref={inputRef}
+          isDisabled={isLoading}
+        >
           Введите текст
         </FieldGroup>
-        <button className="button form__submit" type="submit">
+        <button
+          className="button form__submit"
+          type="submit"
+          disabled={isLoading}
+        >
           Искать
         </button>
         <Asterisk className="form__asterisk" />

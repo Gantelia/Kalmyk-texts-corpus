@@ -27,10 +27,18 @@
 .add-text__field {
   resize: none;
   overflow: hidden;
+
+  &[disabled] {
+    opacity: 0.6;
+  }
 }
 
 .add-text__field[required] + .label-placeholder {
   @include asterisk;
+}
+
+.add-text__field[disabled] + .label-placeholder {
+  opacity: 0.6;
 }
 
 .add-text__clear {

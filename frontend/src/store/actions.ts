@@ -8,7 +8,9 @@ export const getGenres = createAction<Genre[]>('search/getGenres');
 
 export const getAuthors = createAction<string[]>('search/getAuthors');
 
-export const getSearchResult = createAction<Table>('search/getSearchResult');
+export const getSearchResult = createAction<Table | null>(
+  'search/getSearchResult'
+);
 
 export const getHierarchy = createAction<Hierarchy>(
   'genreStructure/getHierarchy'

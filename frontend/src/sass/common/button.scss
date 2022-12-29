@@ -21,4 +21,8 @@
   &:active {
     background-color: #26538c;
   }
+
+  &[disabled] {
+    opacity: 0.6;
+  }
 }

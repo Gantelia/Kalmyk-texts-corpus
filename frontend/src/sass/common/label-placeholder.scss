@@ -29,3 +29,7 @@ input:active + .label-placeholder,
 .field[required] + .label-placeholder {
   @include asterisk();
 }
+
+.field[disabled] + .label-placeholder {
+  opacity: 0.6;
+}

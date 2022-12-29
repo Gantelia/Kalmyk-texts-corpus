@@ -3,7 +3,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { showText } from '../../store/actions';
 import './add-text-field.scss';
 
-function TextArea(_: any, ref: Ref<HTMLTextAreaElement>) {
+type TextAreaProps = {
+  isDisabled: boolean;
+};
+
+function TextArea(
+  { isDisabled }: TextAreaProps,
+  ref: Ref<HTMLTextAreaElement>
+) {
   const [input, setInput] = useState('');
 
   const dispatch = useAppDispatch();
@@ -25,6 +32,7 @@ function TextArea(_: any, ref: Ref<HTMLTextAreaElement>) {
         value={input}
         ref={ref}
         required
+        disabled={isDisabled}
       />
       <label
         /* Доп. класс нужен, чтобы <label> не накладывался на текст,

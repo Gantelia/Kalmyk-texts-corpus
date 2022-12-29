@@ -4,3 +4,7 @@
   padding-left: 50px;
   padding-right: 50px;
 }
+
+input[type='file'][disabled] + .add-text__text-label {
+  opacity: 0.6;
+}

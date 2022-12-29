@@ -75,18 +75,38 @@ function AddTextForm() {
           Пожалуйста, заполните поля со звездочками
         </p>
       )}
-      <Select onChange={handleSelectChange} options={genres} />
-      <FieldGroup inputType="text" id="title" ref={titleRef} required>
+      <Select
+        onChange={handleSelectChange}
+        options={genres}
+        isDisabled={isLoading}
+      />
+      <FieldGroup
+        inputType="text"
+        id="title"
+        ref={titleRef}
+        required
+        isDisabled={isLoading}
+      >
         Название
       </FieldGroup>
-      <FieldGroup inputType="text" id="author" ref={authorRef}>
+      <FieldGroup
+        inputType="text"
+        id="author"
+        ref={authorRef}
+        isDisabled={isLoading}
+      >
         Автор
       </FieldGroup>
-      <FieldGroup inputType="number" id="year" ref={yearRef}>
+      <FieldGroup
+        inputType="number"
+        id="year"
+        ref={yearRef}
+        isDisabled={isLoading}
+      >
         Год
       </FieldGroup>
-      <AddTextField ref={textRef} />
-      <AddTextButton />
+      <AddTextField ref={textRef} isDisabled={isLoading} />
+      <AddTextButton isDisabled={isLoading} />
       <button
         className="button add-text__submit"
         type="submit"

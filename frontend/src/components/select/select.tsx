@@ -6,9 +6,10 @@ import './select.scss';
 type SelectProps = {
   options: Genre[];
   onChange: (value: string | null) => void;
+  isDisabled: boolean;
 };
 
-function Select({ onChange, options }: SelectProps) {
+function Select({ onChange, options, isDisabled }: SelectProps) {
   return (
     <Autocomplete
       className="select add-text__select select--required"
@@ -19,6 +20,7 @@ function Select({ onChange, options }: SelectProps) {
       renderInput={(params) => (
         <TextField {...params} className="select__input" label="Жанр" />
       )}
+      disabled={isDisabled}
     />
   );
 }

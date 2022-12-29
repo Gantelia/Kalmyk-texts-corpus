@@ -6,10 +6,11 @@ type InputProps = PropsWithChildren<{
   id: string;
   children: string;
   required?: boolean;
+  isDisabled: boolean;
 }>;
 
 function Input(
-  { inputType, id, children, required }: InputProps,
+  { inputType, id, children, required, isDisabled }: InputProps,
   ref?: Ref<HTMLInputElement>
 ) {
   const [value, setValue] = useState<string | number>('');
@@ -23,6 +24,7 @@ function Input(
         ref={ref}
         required={required}
         onChange={({ target }) => setValue(target.value)}
+        disabled={isDisabled}
       />
       <label
         className={`label-placeholder ${

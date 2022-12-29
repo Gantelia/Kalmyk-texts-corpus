@@ -3,7 +3,11 @@ import { useAppDispatch } from '../../hooks';
 import { showText } from '../../store/actions';
 import './add-text-button.scss';
 
-function AddTextButton() {
+type AddTextButtonProps = {
+  isDisabled: boolean;
+};
+
+function AddTextButton({ isDisabled }: AddTextButtonProps) {
   const dispatch = useAppDispatch();
 
   // Читает контент из загруженного файла
@@ -20,7 +24,7 @@ function AddTextButton() {
   };
 
   return (
-    <label className="add-text__text-label button" htmlFor="load-file">
+    <>
       <input
         className="visually-hidden"
         type="file"
@@ -31,9 +35,12 @@ function AddTextButton() {
         onChange={(evt) => {
           handleFileLoad(evt);
         }}
+        disabled={isDisabled}
       />
-      Загрузить из файла
-    </label>
+      <label className="add-text__text-label button" htmlFor="load-file">
+        Загрузить из файла
+      </label>
+    </>
   );
 }
 

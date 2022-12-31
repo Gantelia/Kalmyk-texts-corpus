@@ -37,7 +37,7 @@ function AddTextButton({ isDisabled }: AddTextButtonProps) {
         }}
         disabled={isDisabled}
       />
-      <label className="add-text__text-label button" htmlFor="load-file">
+      <label className="add-text__label button" htmlFor="load-file">
         Загрузить из файла
       </label>
     </>

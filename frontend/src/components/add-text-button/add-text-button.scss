@@ -1,10 +1,14 @@
-.add-text__text-label {
+.add-text__label {
   grid-area: 4/1/5/2;
   text-align: center;
   padding-left: 50px;
   padding-right: 50px;
 }
 
-input[type='file'][disabled] + .add-text__text-label {
+input[type='file']:focus + .add-text__label {
+  outline: auto;
+}
+
+input[type='file'][disabled] + .add-text__label {
   opacity: 0.6;
 }

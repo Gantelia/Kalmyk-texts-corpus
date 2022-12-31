@@ -27,6 +27,7 @@ function TextArea(
     <div className="add-text__grow-wrap" data-replicated-value={input}>
       <textarea
         className="add-text__field"
+        id="loaded-text"
         onChange={({ target }) => setInput(target.value)}
         onBlur={({ target }) => dispatch(showText(target.value))}
         value={input}

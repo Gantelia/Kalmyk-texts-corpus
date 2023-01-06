@@ -3,20 +3,20 @@ import { AxiosInstance } from 'axios';
 import { api, store } from '..';
 import { APIRoute } from '../../const';
 import { errorHandle } from '../../services/error-handle';
-import { Genre, SearchMenu } from '../../types/genre';
+import { SearchMenu } from '../../types/genre';
+import { SearchParams } from '../../types/search';
 import { AppDispatch, State } from '../../types/state';
-import { Table } from '../../types/table';
-import { getAuthors, getGenres, getSearchResult } from '../actions';
-
-const adaptMenuToClient = (
-  menu: SearchMenu
-): { genres: Genre[]; authors: string[] } => {
-  const { genres, authors } = menu.response;
-  return {
-    genres: genres.map((item) => ({ id: item.g_id, genre: item.g_short_name })),
-    authors: authors
-  };
-};
+import {
+  getAuthors,
+  getGenres,
+  getSearchResult,
+  setSearchParams
+} from '../actions';
+import {
+  adaptMenuToClient,
+  adaptResultToClient,
+  turnSearchParamsIntoString
+} from './utils';
 
 export const fetchSearchMenuAction = createAsyncThunk(
   'search/fetchSearchMenu',
@@ -32,35 +32,21 @@ export const fetchSearchMenuAction = createAsyncThunk(
   }
 );
 
-const adaptResultToClient = (result: any): Table => {
-  const { pages, RenderType, table } = result;
-  return {
-    renderType: RenderType,
-    pages: pages,
-    items: table.length
-      ? table.map((item: any) => ({
-          id: item.text_id,
-          author: item.author,
-          title: item.text_title,
-          year: item.pub_year
-        }))
-      : []
-  };
-};
-
 export const fetchSearchResultAction = createAsyncThunk<
   void,
-  string,
+  SearchParams,
   {
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
   }
->('search/fetchSearchResult', async (parameter) => {
+>('search/fetchSearchResult', async (params) => {
+  const requestParams = turnSearchParamsIntoString(params);
   try {
-    const { data } = await api.get(`${APIRoute.Search}${parameter}`);
+    const { data } = await api.get(`${APIRoute.Search}${requestParams}`);
     const adaptedData = adaptResultToClient(data.response);
     store.dispatch(getSearchResult(adaptedData));
+    store.dispatch(setSearchParams(params));
   } catch (error) {
     errorHandle(error);
   }

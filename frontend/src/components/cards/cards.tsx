@@ -19,7 +19,9 @@ function Cards({ cards }: CardsProps) {
           <button
             className="cards__button"
             type="button"
-            onClick={() => dispatch(fetchHierarchyAction(`?g_id=${id}`))}
+            onClick={() =>
+              dispatch(fetchHierarchyAction({ genre: id, page: 0 }))
+            }
           >
             <img
               className="card__image"

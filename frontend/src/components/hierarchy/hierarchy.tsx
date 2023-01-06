@@ -32,6 +32,7 @@ function Hierarchy() {
           heading={'Список произведений'}
           creations={getTableType(hierarchy!.items) || []}
           pageCount={checkTableType(hierarchy!)?.pages || 0}
+          section={'hierarchy'}
         />
       )}
       {isTableEmpty && <p className="table__empty">Ничего не найдено</p>}

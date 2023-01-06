@@ -1,9 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { Genre } from '../types/genre';
-import { Document } from '../types/document';
-import { Hierarchy } from '../types/hierarchy';
-import { Table } from '../types/table';
-
+import { InitialState } from '../types/state';
 import {
   showText,
   getAuthors,
@@ -12,20 +8,10 @@ import {
   getHierarchy,
   getSearchResult,
   getServerMessage,
-  setError
+  setError,
+  setSearchParams,
+  setHierarchyParams
 } from './actions';
-
-type InitialState = {
-  genres: Genre[];
-  authors: string[];
-  searchResult: Table | null;
-  hierarchy: Hierarchy | null;
-  breadcrumb: Genre[];
-  document: Document | null;
-  text: string;
-  addTextMessage: string;
-  error: string;
-};
 
 const initialState: InitialState = {
   genres: [],
@@ -36,7 +22,9 @@ const initialState: InitialState = {
   document: null,
   text: '',
   addTextMessage: '',
-  error: ''
+  error: '',
+  searchParams: null,
+  hierarchyParams: null
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -65,6 +53,12 @@ const reducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(setError, (state, action) => {
     state.error = action.payload;
+  });
+  builder.addCase(setSearchParams, (state, action) => {
+    state.searchParams = action.payload;
+  });
+  builder.addCase(setHierarchyParams, (state, action) => {
+    state.hierarchyParams = action.payload;
   });
 });
 

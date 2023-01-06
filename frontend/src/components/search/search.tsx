@@ -16,6 +16,7 @@ function Search() {
             heading={'Результаты поиска'}
             creations={searchResult.items}
             pageCount={searchResult.pages}
+            section={'search'}
           />
         )}
         {searchResult && !searchResult.items.length && (

@@ -20,7 +20,9 @@ function Breadcrumb() {
             <button
               className="breadcrumb__button"
               type="button"
-              onClick={() => dispatch(fetchHierarchyAction(`?g_id=${id}`))}
+              onClick={() =>
+                dispatch(fetchHierarchyAction({ genre: id, page: 0 }))
+              }
             >
               {genre}
             </button>
@@ -29,7 +31,9 @@ function Breadcrumb() {
             <Link
               to={AppRoute.Main}
               className="breadcrumb__button"
-              onClick={() => dispatch(fetchHierarchyAction(`?g_id=${id}`))}
+              onClick={() =>
+                dispatch(fetchHierarchyAction({ genre: id, page: 0 }))
+              }
             >
               {genre}
             </Link>

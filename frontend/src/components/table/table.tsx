@@ -2,26 +2,58 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import { TableItem } from '../../types/table';
-import { NO_PAGINATION_PAGE_COUNT } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import {
+  BACKEND_PAGE_COUNT_SHIFT,
+  FIRST_PAGE,
+  NO_PAGINATION_PAGE_COUNT
+} from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
 import './table.scss';
+import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
 
 type TableProps = {
   heading: string;
   creations: TableItem[];
   pageCount: number;
+  section: string;
 };
 
-function Table({ heading, creations, pageCount }: TableProps) {
-  const [page, setPage] = useState(1);
+function Table({ heading, creations, pageCount, section }: TableProps) {
+  const [page, setPage] = useState(FIRST_PAGE);
 
   const dispatch = useAppDispatch();
+  const { searchParams, hierarchyParams } = useAppSelector((state) => state);
+
+  const isSearch = section === 'search' && searchParams;
+  const isHierarchy = section === 'hierarchy' && hierarchyParams;
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    if (isSearch) {
+      dispatch(
+        fetchSearchResultAction({
+          ...searchParams,
+          page: value - BACKEND_PAGE_COUNT_SHIFT
+        })
+      );
+    }
+    if (isHierarchy) {
+      dispatch(
+        fetchHierarchyAction({
+          ...hierarchyParams,
+          page: value - BACKEND_PAGE_COUNT_SHIFT
+        })
+      );
+    }
     setPage(value);
-    dispatch(fetchHierarchyAction(`?/page=${value}`));
   };
+
+  const isPageWrong =
+    isSearch && page !== searchParams.page + BACKEND_PAGE_COUNT_SHIFT;
+
+  if (isPageWrong) {
+    setPage(searchParams.page + BACKEND_PAGE_COUNT_SHIFT);
+  }
 
   return (
     <>

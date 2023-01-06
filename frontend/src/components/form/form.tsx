@@ -51,9 +51,12 @@ function Form() {
         (item) => genres.find((genre) => genre.genre === item)?.id
       );
       dispatch(
-        fetchSearchResultAction(
-          `?genres=${selectedIds.join(',')}&words=${inputRef.current.value}`
-        )
+        fetchSearchResultAction({
+          genres: selectedIds.join(','),
+          authors: '',
+          words: inputRef.current.value,
+          page: 0
+        })
       );
       setIsValid(true);
       setIsLoading(true);
@@ -62,9 +65,12 @@ function Form() {
     if (selectValue && activeSelect === SelectType.Authors) {
       dispatch(getSearchResult(null));
       dispatch(
-        fetchSearchResultAction(
-          `?authors=${selectValue.join(',')}&words=${inputRef.current.value}`
-        )
+        fetchSearchResultAction({
+          genres: '',
+          authors: selectValue.join(','),
+          words: inputRef.current.value,
+          page: 0
+        })
       );
     }
     setIsValid(true);

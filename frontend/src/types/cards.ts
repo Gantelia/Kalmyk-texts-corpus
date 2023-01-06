@@ -12,7 +12,7 @@ export type Cards = {
 };
 
 export type ServerCard = {
-  g_id: 17;
+  g_id: number;
   g_short_name: string;
   g_picture: string;
   g_full_name: string;

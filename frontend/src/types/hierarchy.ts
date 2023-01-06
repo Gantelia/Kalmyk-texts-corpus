@@ -14,3 +14,8 @@ export type ServerBreadcrumb = {
 };
 
 export type Hierarchy = Breadcrumb & (Cards | Table);
+
+export type HierarchyParams = {
+  genre: number;
+  page: number;
+};

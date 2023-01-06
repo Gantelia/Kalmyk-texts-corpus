@@ -4,6 +4,12 @@ export const NO_PAGINATION_PAGE_COUNT = 1;
 
 export const TIMEOUT_SHOW_ERROR = 3000;
 
+export const BACKEND_PAGE_COUNT_SHIFT = 1;
+
+export const ALL_GENRES_ID = 0;
+
+export const FIRST_PAGE = 1;
+
 export enum AppRoute {
   Main = '/',
   About = '/about/',

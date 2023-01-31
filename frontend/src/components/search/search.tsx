@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks';
-import Form from '../form/form';
+import Form from '../search-form/search-form';
 import NoResult from '../no-result/no-result';
 import Table from '../table/table';
 import './search.scss';

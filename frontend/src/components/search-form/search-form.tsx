@@ -2,15 +2,15 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import { SelectType } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
-import FieldGroup from '../../components/field-group/field-group';
+import FieldGroup from '../field-group/field-group';
 import { Genre } from '../../types/genre';
 import Loader from '../loader/loader';
 import Multiselect from '../multiselect/multiselect';
-import './form.scss';
 import Asterisk from '../asterisk/asterisk';
 import { getSearchResult } from '../../store/actions';
+import './search-form.scss';
 
-function Form() {
+function SearchForm() {
   // Одновременно можно искать только в одном выпадающем списке.
   const [activeSelect, setActiveSelect] = useState(SelectType.Default);
   const [isValid, setIsValid] = useState(true);
@@ -127,4 +127,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default SearchForm;

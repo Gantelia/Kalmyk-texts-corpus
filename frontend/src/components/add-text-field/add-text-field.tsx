@@ -16,8 +16,6 @@ function TextArea(
   const dispatch = useAppDispatch();
   const { text } = useAppSelector((store) => store);
 
-  /* Обновляет состояние поля ввода, чтобы <label> не падал на текст,
-       если текст загружен из файла */
   useEffect(() => {
     setInput(text);
   }, [text]);

@@ -4,12 +4,12 @@ import AddTextButton from '../add-text-button/add-text-button';
 import FieldGroup from '../field-group/field-group';
 import Select from '../select/select';
 import AddTextField from '../add-text-field/add-text-field';
-import './add-text-form.scss';
 import { UserText } from '../../types/document';
 import { loadTextAction } from '../../store/api-actions/document-actions';
 import { getServerMessage } from '../../store/actions';
 import Modal from '../modal/modal';
 import Asterisk from '../asterisk/asterisk';
+import './add-text-form.scss';
 
 function AddTextForm() {
   const [selectValue, setSelectValue] = useState<string | null>(null);

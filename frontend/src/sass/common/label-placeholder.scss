@@ -27,10 +27,12 @@ input:active + .field-group__wrapper .label-placeholder,
   transform: translate(-13%, -1em) scale(0.75);
 }
 
-.field[required] ~ .label-placeholder {
+.field[required] ~ .label-placeholder,
+.field[required] ~ .field-group__wrapper .label-placeholder {
   @include asterisk();
 }
 
-.field[disabled] ~ .label-placeholder {
+.field[disabled] ~ .label-placeholder,
+.field[disabled] ~ .field-group__wrapper .label-placeholder {
   opacity: 0.6;
 }

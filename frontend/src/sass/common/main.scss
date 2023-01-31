@@ -1,4 +1,11 @@
 .main {
-  padding: 60px 223px 32px;
+  padding-top: 3.75rem;
+  padding-bottom: 2rem;
+  display: flex;
   flex-grow: 1;
+}
+
+.main__wrapper {
+  width: 70%;
+  margin: 0 auto;
 }

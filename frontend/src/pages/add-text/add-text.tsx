@@ -4,8 +4,10 @@ import './add-text.scss';
 function AddText() {
   return (
     <main className="main">
-      <h2 className="title">Загрузить текст</h2>
-      <AddTextForm />
+      <div className="main__wrapper">
+        <h2 className="title">Загрузить текст</h2>
+        <AddTextForm />
+      </div>
     </main>
   );
 }

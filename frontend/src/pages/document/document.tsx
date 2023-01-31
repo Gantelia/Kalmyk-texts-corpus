@@ -4,9 +4,11 @@ import Search from '../../components/search/search';
 function Document() {
   return (
     <main className="main">
-      <h1 className="visually-hidden">Документ</h1>
-      <Search />
-      <Hierarchy />
+      <div className="main__wrapper">
+        <h1 className="visually-hidden">Документ</h1>
+        <Search />
+        <Hierarchy />
+      </div>
     </main>
   );
 }

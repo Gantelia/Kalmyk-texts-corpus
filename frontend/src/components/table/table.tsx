@@ -9,8 +9,8 @@ import {
 } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
-import './table.scss';
 import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
+import './table.scss';
 
 type TableProps = {
   heading: string;

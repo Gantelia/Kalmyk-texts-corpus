@@ -2,15 +2,16 @@
 
 @mixin field {
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   width: 100%;
   height: 100%;
-  padding: 17px 20px;
+  padding: 19px;
   font-family: 'PT Sans Caption', sans-serif;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.25rem;
+  line-height: 1.3;
   color: #000000;
   background-color: $bg-light-color;
+  text-overflow: ellipsis;
 
   &[disabled] {
     opacity: 0.6;
@@ -19,7 +20,7 @@
 
 @mixin validation {
   position: absolute;
-  top: -24px;
+  top: -1.5rem;
   margin: 0;
   color: #ac3e3e;
   left: 20px;

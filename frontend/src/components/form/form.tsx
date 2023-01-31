@@ -12,7 +12,6 @@ import { getSearchResult } from '../../store/actions';
 
 function Form() {
   // Одновременно можно искать только в одном выпадающем списке.
-  // Жанры и авторы не должны перекрещиваться в запросе.
   const [activeSelect, setActiveSelect] = useState(SelectType.Default);
   const [isValid, setIsValid] = useState(true);
   const [selectValue, setSelectValue] = useState<string[] | Genre[] | null>(

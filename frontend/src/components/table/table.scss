@@ -1,33 +1,22 @@
 @import '../../sass/variables.scss';
-@import '../../sass/common/button.scss';
 
 .table {
   margin-bottom: 32px;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.25rem;
+  line-height: 1.3;
   color: #4e4e53;
   background-color: $basic-color;
-  font-size: 20px;
-  line-height: 26px;
   border-collapse: collapse;
   width: 100%;
   text-align: left;
 }
 
-.table__empty {
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-}
-
 .table__caption {
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 1.5rem;
+  line-height: 1.29;
   font-weight: 700;
   color: $basic-dark-color;
-  margin-bottom: 32px;
+  margin-bottom: 1.33em;
   text-align: left;
 }
 
@@ -45,12 +34,8 @@
   font-weight: 700;
 }
 
-.table__row--head .table__cell {
-  padding: 4px 9px 4px 12px;
-}
-
 .table__cell {
-  padding: 4px 8px 4px 13px;
+  padding: 0.2em 0.45em 0.2em 0.65em;
 
   &:first-child {
     width: 300px;
@@ -68,21 +53,21 @@
 
 .table__row--head .table__cell {
   &:first-child {
-    border-top-left-radius: 12px;
+    border-top-left-radius: 0.75rem;
   }
 
   &:last-child {
-    border-top-right-radius: 12px;
+    border-top-right-radius: 0.75rem;
   }
 }
 
 .table__row:last-child .table__cell {
   &:first-child {
-    border-bottom-left-radius: 12px;
+    border-bottom-left-radius: 0.75rem;
   }
 
   &:last-child {
-    border-bottom-right-radius: 12px;
+    border-bottom-right-radius: 0.75rem;
   }
 }
 
@@ -124,9 +109,9 @@
   background-color: #ffffff;
   color: #4e4e53;
   font-family: 'PT Sans Caption', sans-serif;
-  font-size: 17px;
-  line-height: 22px;
-  border-radius: 8px;
+  font-size: 1.063rem;
+  line-height: 1.3;
+  border-radius: 0.5rem;
   width: 40px;
   height: 40px;
   margin: 5px;

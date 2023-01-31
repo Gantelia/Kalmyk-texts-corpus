@@ -12,19 +12,21 @@ function Layout() {
   return (
     <div className="app">
       <header className="header">
-        <Link className="logo" to="/">
-          <img
-            className="logo__image"
-            src={Logo}
-            width="35"
-            height="35"
-            alt="Логотип КалмГУ"
-          />
-        </Link>
-        <p className="header__title">
-          Корпус текстов
-          <br /> калмыцкого языка
-        </p>
+        <div className="wrapper">
+          <Link className="logo" to="/">
+            <img
+              className="logo__image"
+              src={Logo}
+              width="35"
+              height="35"
+              alt="Логотип КалмГУ"
+            />
+          </Link>
+          <p className="header__title">
+            Корпус текстов
+            <br /> калмыцкого языка
+          </p>
+        </div>
       </header>
       <Outlet />
       <footer className="footer">

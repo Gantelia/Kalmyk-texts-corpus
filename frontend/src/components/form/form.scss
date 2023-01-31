@@ -1,10 +1,10 @@
 @import '../../sass/variables';
-@import '../../sass/common/button.scss';
 @import '../../sass/mixins.scss';
 
 .form {
   display: grid;
-  grid-template-columns: 655px 1fr;
+  grid-template-columns: 65% 1fr;
+  grid-template-rows: repeat(2, 1fr);
   column-gap: 25px;
   row-gap: 16px;
   position: relative;

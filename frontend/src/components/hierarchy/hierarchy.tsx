@@ -13,6 +13,7 @@ import {
   isConditionMet
 } from './hierarchy-utils';
 import './hierarchy.scss';
+import NoResult from '../no-result/no-result';
 
 function Hierarchy() {
   const { hierarchy } = useAppSelector((state) => state);
@@ -35,7 +36,7 @@ function Hierarchy() {
           section={'hierarchy'}
         />
       )}
-      {isTableEmpty && <p className="table__empty">Ничего не найдено</p>}
+      {isTableEmpty && <NoResult />}
       {!isMainPage && <Text />}
       {!hierarchy && <Loader />}
     </section>

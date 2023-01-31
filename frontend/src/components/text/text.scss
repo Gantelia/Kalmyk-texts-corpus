@@ -5,34 +5,34 @@
   background-color: $bg-light-color;
   border-radius: 12px;
   color: #000000;
-  padding: 42px 60px 32px;
+  padding: 2.625rem 3.75rem 2rem;
 }
 
 .text__header {
-  font-size: 24px;
-  line-height: 31px;
+  font-size: 1.5rem;
+  line-height: 1.29;
   display: block;
 }
 
 .text__author {
   margin: 0;
-  margin-bottom: 31px;
+  margin-bottom: 1.29em;
 }
 
 .text__title {
   font: inherit;
   margin: 0;
-  margin-bottom: 31px;
+  margin-bottom: 1.29em;
 }
 
 .text__year {
-  font-size: 20px;
-  line-height: 24px;
-  margin-bottom: 31px;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 1.55em;
 }
 
 .text__body {
   white-space: pre-wrap;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.25rem;
+  line-height: 1.3;
 }

@@ -1,10 +1,10 @@
-import './breadcrumb.scss';
 import { usePathCheck } from '../../hooks/use-path-check';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
 import { sortItems } from './breadcrumb-utils';
+import './breadcrumb.scss';
 
 function Breadcrumb() {
   const isMainPage = usePathCheck();

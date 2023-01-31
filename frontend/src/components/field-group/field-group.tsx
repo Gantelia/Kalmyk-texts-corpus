@@ -16,7 +16,7 @@ function Input(
   const [value, setValue] = useState<string | number>('');
 
   return (
-    <p className={`field-group field-group--${id}`}>
+    <div className={`field-group field-group--${id}`}>
       <input
         className="field"
         type={inputType}
@@ -26,15 +26,17 @@ function Input(
         onChange={({ target }) => setValue(target.value)}
         disabled={isDisabled}
       />
-      <label
-        className={`label-placeholder ${
-          value ? 'label-placeholder--offset' : ''
-        }`}
-        htmlFor={id}
-      >
-        {children}
-      </label>
-    </p>
+      <div className="field-group__wrapper">
+        <label
+          className={`label-placeholder ${
+            value ? 'label-placeholder--offset' : ''
+          }`}
+          htmlFor={id}
+        >
+          {children}
+        </label>
+      </div>
+    </div>
   );
 }
 const FieldGroup = forwardRef(Input);

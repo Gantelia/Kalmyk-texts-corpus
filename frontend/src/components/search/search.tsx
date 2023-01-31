@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../hooks';
 import Form from '../form/form';
+import NoResult from '../no-result/no-result';
 import Table from '../table/table';
 import './search.scss';
 
@@ -19,9 +20,7 @@ function Search() {
             section={'search'}
           />
         )}
-        {searchResult && !searchResult.items.length && (
-          <p className="table__empty">Ничего не найдено</p>
-        )}
+        {searchResult && !searchResult.items.length && <NoResult />}
       </div>
     </section>
   );

@@ -4,26 +4,28 @@
 .select {
   background-color: $bg-light-color;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
 }
 
 .select__input .MuiInputLabel-root {
   font-family: 'PT Sans Caption', sans-serif;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 1.25rem;
+  line-height: 1.3;
   color: #000000;
-  padding-left: 6px;
+  padding-left: 0.625rem;
 }
 
 .select .MuiAutocomplete-endAdornment {
-  top: calc(50% - 18px);
+  top: calc(50% - 1.125rem);
 }
 
 .select .MuiInputBase-root {
-  border-radius: 12px;
+  border-radius: 0.75rem;
   font-family: 'PT Sans Caption', sans-serif;
-  font-size: 20px;
-  line-height: 38px;
+  font-size: 1.25rem;
+  line-height: 1.9;
 }
 
 .select--required .MuiFormLabel-root {

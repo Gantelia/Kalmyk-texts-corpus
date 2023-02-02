@@ -21,3 +21,10 @@ export type InitialState = {
   searchParams: SearchParams | null;
   hierarchyParams: HierarchyParams | null;
 };
+
+export type SearchState = {
+  genres: Genre[];
+  authors: string[];
+  searchResult: Table | null;
+  searchParams: SearchParams | null;
+};

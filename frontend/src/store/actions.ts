@@ -30,5 +30,5 @@ export const setSearchParams = createAction<SearchParams>(
 );
 
 export const setHierarchyParams = createAction<HierarchyParams>(
-  'search/setHierarchyParams'
+  'genreStructure/setHierarchyParams'
 );

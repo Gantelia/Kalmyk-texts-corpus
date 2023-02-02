@@ -41,3 +41,9 @@ export enum HTTP_CODE {
   BAD_REQUEST = 400,
   NOT_FOUND = 404
 }
+
+export enum NameSpace {
+  search = 'SEARCH',
+  genreHierarchy = 'HIERARCHY',
+  document = 'DOCUMENT'
+}

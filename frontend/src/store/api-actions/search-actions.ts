@@ -11,7 +11,8 @@ import {
   getGenres,
   getSearchResult,
   setSearchParams
-} from '../actions';
+} from '../search-slice/search-slice';
+
 import {
   adaptMenuToClient,
   adaptResultToClient,

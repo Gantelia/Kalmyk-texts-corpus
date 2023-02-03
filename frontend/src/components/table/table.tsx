@@ -8,7 +8,7 @@ import {
   NO_PAGINATION_PAGE_COUNT
 } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchyAction } from '../../store/api-actions/genre-structure-actions';
 import { fetchSearchResultAction } from '../../store/api-actions/search-actions';
 import './table.scss';
 
@@ -23,7 +23,10 @@ function Table({ heading, creations, pageCount, section }: TableProps) {
   const [page, setPage] = useState(FIRST_PAGE);
 
   const dispatch = useAppDispatch();
-  const { searchParams, hierarchyParams } = useAppSelector((state) => state);
+  const { searchParams } = useAppSelector(({ SEARCH }) => SEARCH);
+  const { hierarchyParams } = useAppSelector(
+    ({ GENRE_STRUCTURE }) => GENRE_STRUCTURE
+  );
 
   const isSearch = section === 'search' && searchParams;
   const isHierarchy = section === 'hierarchy' && hierarchyParams;

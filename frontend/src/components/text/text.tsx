@@ -8,7 +8,7 @@ import './text.scss';
 function Text() {
   const { id } = useParams();
 
-  const { document } = useAppSelector((state) => state);
+  const { document } = useAppSelector(({ DOCUMENT }) => DOCUMENT);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

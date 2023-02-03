@@ -16,7 +16,9 @@ import './hierarchy.scss';
 import NoResult from '../no-result/no-result';
 
 function Hierarchy() {
-  const { hierarchy } = useAppSelector((state) => state);
+  const { hierarchy } = useAppSelector(
+    ({ GENRE_STRUCTURE }) => GENRE_STRUCTURE
+  );
 
   const isMainPage = usePathCheck();
   const isCardList = isConditionMet(isMainPage, hierarchy, RenderType.Cards);

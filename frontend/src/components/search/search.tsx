@@ -5,7 +5,7 @@ import Table from '../table/table';
 import './search.scss';
 
 function Search() {
-  const { searchResult } = useAppSelector((store) => store);
+  const { searchResult } = useAppSelector(({ SEARCH }) => SEARCH);
 
   return (
     <section className="search">

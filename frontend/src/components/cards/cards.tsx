@@ -1,6 +1,6 @@
 import { NARROW_LIST_CARD_COUNT } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchyAction } from '../../store/api-actions/genre-structure-actions';
 import { CardItem } from '../../types/cards';
 import './cards.scss';
 

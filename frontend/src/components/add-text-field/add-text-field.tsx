@@ -1,6 +1,6 @@
 import { forwardRef, Ref, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { showText } from '../../store/actions';
+import { showText } from '../../store/document-slice/document-slice';
 import './add-text-field.scss';
 
 type TextAreaProps = {
@@ -14,7 +14,7 @@ function TextArea(
   const [input, setInput] = useState('');
 
   const dispatch = useAppDispatch();
-  const { text } = useAppSelector((store) => store);
+  const { text } = useAppSelector(({ DOCUMENT }) => DOCUMENT);
 
   useEffect(() => {
     setInput(text);

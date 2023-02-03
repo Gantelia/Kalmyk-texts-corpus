@@ -6,10 +6,11 @@ import Select from '../select/select';
 import AddTextField from '../add-text-field/add-text-field';
 import { UserText } from '../../types/document';
 import { loadTextAction } from '../../store/api-actions/document-actions';
-import { getServerMessage } from '../../store/actions';
 import Modal from '../modal/modal';
 import Asterisk from '../asterisk/asterisk';
 import './add-text-form.scss';
+import { getAddTextMessage } from '../../store/document-slice/document-slice';
+import { Genre } from '../../types/genre';
 
 function AddTextForm() {
   const [selectValue, setSelectValue] = useState<string | null>(null);
@@ -17,8 +18,8 @@ function AddTextForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useAppDispatch();
-  const { addTextMessage } = useAppSelector((state) => state);
-  const { genres } = useAppSelector((state) => state);
+  const { addTextMessage } = useAppSelector(({ DOCUMENT }) => DOCUMENT);
+  const { genres } = useAppSelector(({ SEARCH }) => SEARCH);
 
   const titleRef = useRef<HTMLInputElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
@@ -36,7 +37,7 @@ function AddTextForm() {
   };
 
   const handleModalClick = () => {
-    dispatch(getServerMessage(''));
+    dispatch(getAddTextMessage(''));
   };
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +53,7 @@ function AddTextForm() {
     const file = textRef.current;
 
     if (author && title && year && file) {
-      const value = genres.find((item) => item.genre === selectValue);
+      const value = genres.find((item: Genre) => item.genre === selectValue);
       const text: UserText = {
         author: author.value,
         genre: String(value!.id),

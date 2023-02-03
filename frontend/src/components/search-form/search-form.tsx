@@ -7,8 +7,8 @@ import { Genre } from '../../types/genre';
 import Loader from '../loader/loader';
 import Multiselect from '../multiselect/multiselect';
 import Asterisk from '../asterisk/asterisk';
-import { getSearchResult } from '../../store/actions';
 import './search-form.scss';
+import { getSearchResult } from '../../store/search-slice/search-slice';
 
 function SearchForm() {
   // Одновременно можно искать только в одном выпадающем списке.
@@ -21,7 +21,9 @@ function SearchForm() {
 
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
-  const { genres, authors, searchResult } = useAppSelector((state) => state);
+  const { genres, authors, searchResult } = useAppSelector(
+    ({ SEARCH }) => SEARCH
+  );
 
   useEffect(() => {
     if (isLoading && searchResult) {

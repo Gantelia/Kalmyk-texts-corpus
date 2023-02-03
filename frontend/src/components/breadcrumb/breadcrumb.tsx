@@ -2,7 +2,7 @@ import { usePathCheck } from '../../hooks/use-path-check';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchHierarchyAction } from '../../store/api-actions/hierarchy-actions';
+import { fetchHierarchyAction } from '../../store/api-actions/genre-structure-actions';
 import { sortItems } from './breadcrumb-utils';
 import './breadcrumb.scss';
 
@@ -10,7 +10,7 @@ function Breadcrumb() {
   const isMainPage = usePathCheck();
 
   const dispatch = useAppDispatch();
-  const { breadcrumb } = useAppSelector((state) => state);
+  const { breadcrumb } = useAppSelector(({ BREADCRUMB }) => BREADCRUMB);
 
   return (
     <ul className="breadcrumb">

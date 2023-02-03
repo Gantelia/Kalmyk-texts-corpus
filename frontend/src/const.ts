@@ -2,8 +2,6 @@ export const NARROW_LIST_CARD_COUNT = 4;
 
 export const NO_PAGINATION_PAGE_COUNT = 1;
 
-export const TIMEOUT_SHOW_ERROR = 3000;
-
 export const BACKEND_PAGE_COUNT_SHIFT = 1;
 
 export const ALL_GENRES_ID = 0;
@@ -44,6 +42,7 @@ export enum HTTP_CODE {
 
 export enum NameSpace {
   search = 'SEARCH',
-  genreHierarchy = 'HIERARCHY',
-  document = 'DOCUMENT'
+  genreStructure = 'GENRE_STRUCTURE',
+  document = 'DOCUMENT',
+  breadcrumb = 'BREADCRUMB'
 }

@@ -6,8 +6,9 @@ import { store } from './store';
 import App from './components/app/App';
 import './index.scss';
 import { fetchSearchMenuAction } from './store/api-actions/search-actions';
-import { fetchHierarchyAction } from './store/api-actions/hierarchy-actions';
-import ErrorMessage from './components/error-message/error-message';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { fetchHierarchyAction } from './store/api-actions/genre-structure-actions';
 import { ALL_GENRES_ID } from './const';
 
 store.dispatch(fetchSearchMenuAction());
@@ -19,7 +20,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ErrorMessage />
+      <ToastContainer />
       <App />
     </Provider>
   </React.StrictMode>

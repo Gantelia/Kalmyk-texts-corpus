@@ -1,27 +1,18 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchDocumentAction } from '../../store/api-actions/document-actions';
+import { Document } from '../../types/document';
 import Loader from '../loader/loader';
 import './text.scss';
 
-function Text() {
-  const { id } = useParams();
+type TextProps = {
+  document: Document | null;
+};
 
-  const { document } = useAppSelector(({ DOCUMENT }) => DOCUMENT);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (document === null || document?.id !== Number(id)) {
-      dispatch(fetchDocumentAction(Number(id)));
-    }
-  }, [document, id]);
-
+function Text({ document }: TextProps) {
   if (!document) {
     return <Loader />;
   }
 
   const { author, title, year, body } = document;
+
   return (
     <article className="text">
       <header className="text__header">

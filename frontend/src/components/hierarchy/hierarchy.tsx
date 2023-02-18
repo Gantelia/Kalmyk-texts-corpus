@@ -1,17 +1,10 @@
 import { useAppSelector } from '../../hooks';
-import { usePathCheck } from '../../hooks/use-path-check';
 import { RenderType } from '../../const';
 import Breadcrumb from '../breadcrumb/breadcrumb';
-import Text from '../text/text';
 import Cards from '../cards/cards';
 import Table from '../table/table';
 import Loader from '../loader/loader';
-import {
-  checkTableType,
-  getCardsType,
-  getTableType,
-  isConditionMet
-} from './hierarchy-utils';
+import { checkTableType, getCardsType, getTableType } from './hierarchy-utils';
 import './hierarchy.scss';
 import NoResult from '../no-result/no-result';
 
@@ -20,9 +13,8 @@ function Hierarchy() {
     ({ GENRE_STRUCTURE }) => GENRE_STRUCTURE
   );
 
-  const isMainPage = usePathCheck();
-  const isCardList = isConditionMet(isMainPage, hierarchy, RenderType.Cards);
-  const isTable = isConditionMet(isMainPage, hierarchy, RenderType.Table);
+  const isCardList = hierarchy && hierarchy.renderType === RenderType.Cards;
+  const isTable = hierarchy && hierarchy.renderType === RenderType.Table;
   const isTableEmpty = isTable && !hierarchy!.items.length;
 
   return (
@@ -39,7 +31,6 @@ function Hierarchy() {
         />
       )}
       {isTableEmpty && <NoResult />}
-      {!isMainPage && <Text />}
       {!hierarchy && <Loader />}
     </section>
   );
